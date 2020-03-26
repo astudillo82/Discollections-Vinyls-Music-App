@@ -1,21 +1,28 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import signUp from '../services/signUp';
+import { Link, useHistory } from 'react-router-dom';
+import { registerUser } from '../logic/AuthUser';
 
-const Register = () => {debugger
+const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [empties, setEmpties] = useState('');
+
+  const history = useHistory();
 
   const submittedForm = async (e) => {
     e.preventDefault();
+    setEmpties('');
 
     if (!email || !password) {
-      return 'empties';
+      setEmpties('Please complete the fields');
+      return;
     }
-    const result = await signUp(email, password);
-    console.log('result = ', result);
+
+    const result = await registerUser(email, password);
+
+    return result.correct ? history.push('/') : setEmpties(result.message);
   };
 
 
@@ -23,10 +30,6 @@ const Register = () => {debugger
     <div>
       <h1>USER REGISTER</h1>
       <form onSubmit={submittedForm}>
-        {/* <div>
-          <label htmlFor="name">NAME</label>
-          <input type="name" id="name" />
-        </div> */}
         <div>
           <label htmlFor="email">EMAIL</label>
           <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -35,11 +38,12 @@ const Register = () => {debugger
           <label htmlFor="password">PASSWORD</label>
           <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <button type="button">REGISTER</button>
-        <Link to="/">
-          <button type="button">GO BACK</button>
-        </Link>
+        <button type="submit">REGISTER</button>
       </form>
+      <Link to="/">
+        <button type="button">GO BACK</button>
+      </Link>
+      {empties !== '' && <span>{empties}</span>}
     </div>
   );
 };

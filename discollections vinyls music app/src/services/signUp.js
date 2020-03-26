@@ -1,13 +1,14 @@
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 async function signUp(email, password) {
   try {
-    const result = firebase.auth().createUserWithEmailAndPassword(email, password);
-    console.log(result)
-    return !result;
+    const result = await firebase.auth().createUserWithEmailAndPassword(email, password);
+    console.log('result is -->', result);
+    return { correct: true, id: result.user.uid };
   } catch (error) {
-    return false;
+    return { correct: false, message: error.message };
   }
 }
 
 export default signUp;
+ 
