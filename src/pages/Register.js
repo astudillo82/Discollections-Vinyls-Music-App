@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 import React, { useState } from 'react';
@@ -21,7 +22,6 @@ const Register = () => {
     }
 
     const result = await registerUser(email, password);
-
     return result.correct ? history.push('/') : setEmpties(result.message);
   };
 
