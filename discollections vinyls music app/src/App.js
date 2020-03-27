@@ -16,9 +16,7 @@ firebase.initializeApp(firebaseConfig);
 
 function App() {
   useEffect(() => {
-    registerAuthObserver((user) => {
-      console.log('AppUser is : -->', user);
-    });
+    registerAuthObserver((user) => user);
   }, []);
 
   return (
