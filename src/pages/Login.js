@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 import React, { useState } from 'react';
@@ -21,8 +22,7 @@ const Login = () => {
     }
 
     const result = await logInUser(email, password);
-
-    return result.correct ? history.push('/welcome') : setEmpties('incorrect username and/or password.');
+    return result.correct ? history.push('/home') : setEmpties('incorrect username and/or password.');
   };
 
   return (
