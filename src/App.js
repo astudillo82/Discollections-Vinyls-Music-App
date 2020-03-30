@@ -10,6 +10,8 @@ import Home from './components/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import { registerAuthObserver } from './logic/AuthUser';
+import AlbumDetails from './components/AlbumDetails/AlbumDetails';
+
 
 firebase.initializeApp(firebaseConfig);
 
@@ -23,7 +25,8 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={Main} />
-        <Route exact path="/welcome" component={Home} />
+        <Route exact path="/album/:album_id" component={AlbumDetails} />
+        <Route exact path="/home" component={Home} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
       </Switch>
