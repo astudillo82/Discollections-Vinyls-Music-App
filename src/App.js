@@ -25,7 +25,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={Main} />
-        <Route exact path="/album/:album_id" component={AlbumDetails} />
+        <Route exact path="/album/:_albumId" component={AlbumDetails} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />

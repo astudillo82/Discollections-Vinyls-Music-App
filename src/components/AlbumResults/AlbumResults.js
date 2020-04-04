@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ItemArtist = (props) => {
+const AlbumResults = (props) => {
   const {
     master_id,
+    id,
     year,
     title,
-    thumb
+    thumb, 
+    label,
   } = props.item;
 
   return (
@@ -14,10 +16,12 @@ const ItemArtist = (props) => {
       <img src={`${thumb}`} alt="title" className="artist_cover" title={title} />
       <p>Title: {title}</p>
       <p>Year: {year}</p>
-      <p>ID : {master_id}</p>
+      <p>MASTER ID : {master_id}</p>
+      <p>ID : {id}</p>
+      <p>Label : {label}</p>
       <Link to={`/album/${master_id}`}>See Album Details</Link>
     </div>
   );
 };
 
-export default ItemArtist;
+export default AlbumResults;

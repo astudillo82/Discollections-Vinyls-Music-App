@@ -1,35 +1,64 @@
+/* eslint-disable no-async-promise-executor */
 import axios from 'axios';
 
-const DISCOGS_API_URL = 'https://api.discogs.com/database/search?format=vinyl';
 const API_KEY = 'IDEzlChCVBuEmXtiHrJu';
 const API_SECRET = 'eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS';
 
-
-function fetchMusic(page, perPage) {
+// HOME PAGE
+function fetchMusic() {
   return new Promise(async (resolve, reject) => {
-    let query = `${DISCOGS_API_URL}&key=${API_KEY}&secret=${API_SECRET}&`;
-    if (page && perPage) query += `page=${page}&per_page=${perPage}`;
-
-    try {
-      const response = await axios.get(query);
-      resolve(response.data.results);
-    } catch (error) {
-      reject ('You have an error!!!');
-    }
-  });
-}
-
-
-function albumDetails(album_id) {
-  return new Promise(async(resolve, reject) => {
-    let query = 'https://api.discogs.com/masters/';
-    if (album_id) query += `${album_id}`;
+    const query = 'https://api.discogs.com/database/search?format=vinyl&key=IDEzlChCVBuEmXtiHrJu&secret=eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS&page=1&per_page=20';
 
     try {
       const response = await axios.get(query);
       resolve(response.data);
     } catch (error) {
-      reject('You have an error!!!');
+      reject(new Error('You have an error!!!'));
+    }
+  });
+}
+
+// SEARCH BY ARTIST
+function findArtist(input) {
+  return new Promise(async (resolve, reject) => {
+    const query = `https://api.discogs.com/database/search?format=vinyl&artist=${input}&key=IDEzlChCVBuEmXtiHrJu&secret=eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS&page=1&per_page=25`;
+
+    try {
+      const response = await axios.get(query);
+      // resolve(response.data.results);(CHECK!!!)
+      resolve(response.data);
+    } catch (error) {
+      reject(new Error('You have an error!!!'));
+    }
+  });
+}
+
+
+// NEXT URL
+function searchFromUrl(url) {
+  return new Promise(async (resolve, reject) => {
+    const query = url;
+
+    try {
+      const response = await axios.get(query);
+      resolve(response.data);
+    } catch (error) {
+      reject('You have an error!!!');// CHECK (put New Error ot not!!)
+    }
+  });
+}
+
+// ALBUM DETAILS(LINK TO)
+function albumDetails(_albumId) {
+  return new Promise(async (resolve, reject) => {
+    // const query = `https://api.discogs.com/releases/${album_id}?secret=${API_SECRET}&key=${API_KEY}`;(CHECK!!!!)
+    const query = `https://api.discogs.com/masters/${_albumId}?secret=${API_SECRET}&key=${API_KEY}`;
+
+    try {
+      const response = await axios.get(query);
+      resolve(response.data);
+    } catch (error) {
+      reject('You have an error!!!');// CHECK (put New Error ot not!!)
     }
   });
 }
@@ -38,4 +67,6 @@ function albumDetails(album_id) {
 export {
   fetchMusic,
   albumDetails,
+  searchFromUrl,
+  findArtist,
 };
