@@ -1,42 +1,44 @@
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { signOutUser } from '../../logic/AuthUser';
-import ItemArtist from '../ItemArtist';
+import ItemArtist from '../AlbumResults';
 import LogicMusic from '../../logic/LogicMusic';
-import Pagination from '../Pagination';
 
 const Home = () => {
-  const [artist, setArtist] = useState([]);
+  const [results, setResults] = useState({});
   const [input, setInput] = useState('');
-  const [page, setPage] = useState(1);
-  const [perPage] = useState(25);
+  const [url, setUrl] = useState('');
+
 
   const getArtist = async () => {
-    // e.preventDefault();
-    const newArtist = await LogicMusic.takeSearchArtist(page, perPage);
-    setArtist(newArtist);
+    // const newArtist = await LogicMusic.takeFindArtist(input);(CHECK!!!)
+    const newArtist = await LogicMusic.takeHomeArtist();
+    setResults(newArtist);
   };
 
   useEffect(() => {
     getArtist();
-  });
+  }, []); // NO QUITAR [], EVITA ERROR 429
+
+
+  // eslint-disable-next-line no-shadow
+  const getUrl = async (url) => {
+    const response = await LogicMusic.takeSearchFromUrl(url);
+    setResults(response);
+  };
+
+  useEffect(() => {
+    getUrl(url);
+  }, [url]);
 
   const history = useHistory();
-
   const SignOut = async () => {
     const result = await signOutUser();
     return result ? history.push('/') : false;
-  };
-
-  const nextPage = () => {
-    setPage(page + 1);
-  };
-
-  const prevPage = () => {
-    setPage(page - 1);
   };
 
   return (
@@ -45,23 +47,23 @@ const Home = () => {
 
       <Link onClick={SignOut} to="/">SIGN OUT</Link>
 
-      <form onSubmit={getArtist}>
+      <div>
         <div>
           <label>
             <input type="text" id="text" value={input} placeholder="Search Artist" onChange={(e) => setInput(e.target.value)} />
           </label>
         </div>
-        <button type="submit">SEARCH</button>
-      </form>
+        <button type="button" onClick={getArtist}>SEARCH</button>
+      </div>
+
 
       <div className="group">
-        {artist.map((elem) => {
-          return <ItemArtist key={elem.id} item={elem} />;
-        })}
+        {results.results && results.results.map((elem) => <ItemArtist key={elem.id} item={elem} />)}
       </div>
 
       <div className="page-button">
-        <Pagination page={page} nextPage={nextPage} prevPage={prevPage} />
+        <button type="button" className="prev-page" onClick={() => setUrl(results.pagination.urls.prev)}>PREV</button>
+        <button type="button" className="next-page" onClick={() => setUrl(results.pagination.urls.next)}>NEXT</button>
       </div>
     </div>
   );
