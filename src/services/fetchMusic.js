@@ -51,8 +51,8 @@ function searchFromUrl(url) {
 // ALBUM DETAILS(LINK TO)
 function albumDetails(_albumId) {
   return new Promise(async (resolve, reject) => {
-    // const query = `https://api.discogs.com/releases/${album_id}?secret=${API_SECRET}&key=${API_KEY}`;(CHECK!!!!)
-    const query = `https://api.discogs.com/masters/${_albumId}?secret=${API_SECRET}&key=${API_KEY}`;
+    const query = `https://api.discogs.com/releases/${_albumId}?secret=${API_SECRET}&key=${API_KEY}`; //(CHECK!!!!)
+    // const query = `https://api.discogs.com/masters/${_albumId}?secret=${API_SECRET}&key=${API_KEY}`;
 
     try {
       const response = await axios.get(query);

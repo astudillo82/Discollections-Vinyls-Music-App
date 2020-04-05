@@ -19,7 +19,8 @@ const AlbumResults = (props) => {
       <p>MASTER ID : {master_id}</p>
       <p>ID : {id}</p>
       <p>Label : {label}</p>
-      <Link to={`/album/${master_id}`}>See Album Details</Link>
+      {/* <Link to={`/album/${master_id}`}>See Album Details</Link> */}
+      <Link to={`/album/${id}`}>See Album Details</Link>
     </div>
   );
 };
