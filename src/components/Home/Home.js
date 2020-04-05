@@ -8,11 +8,11 @@ import { signOutUser } from '../../logic/AuthUser';
 import ItemArtist from '../AlbumResults';
 import LogicMusic from '../../logic/LogicMusic';
 
+
 const Home = () => {
   const [results, setResults] = useState({});
   const [input, setInput] = useState('');
   const [url, setUrl] = useState('');
-
 
   const getArtist = async () => {
     // const newArtist = await LogicMusic.takeFindArtist(input);(CHECK!!!)
@@ -70,3 +70,4 @@ const Home = () => {
 };
 
 export default Home;
+ 
