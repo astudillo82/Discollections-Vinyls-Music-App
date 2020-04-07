@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { logInUser } from '../logic/AuthUser';
 import './Login.scss';
+import LoginImage from '../../src/images/login-background.jpg'
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -27,11 +28,14 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      <header>
-        <h1 className="register-title">LOGIN USER</h1>
-        <p className="register-subtitle">Please fill in this form to login.</p>
-      </header>
+    <div>    
+    <div className="login-page"> 
+      <div className="titles">
+        <h1 className="login-title">LOGIN USER</h1>
+        <p className="login-subtitle">Please fill in this form to login.</p>        
+      </div>  
+       
+      
 
       <form className="login-form" onSubmit={submittedForm}>
         <div className="login-email">
@@ -45,12 +49,17 @@ const Login = () => {
         </div>
       </form>
       
-      <div className="buttons"></div>
+      <div className="buttons">
         <button className="login-button" type="submit">LOG IN</button>
         <Link to="/">
-          <button className="go_back button" type="button">GO BACK</button>
+          <button className="go_back button" type="button">GO BACK</button>        
         </Link>
+        </div>
       {empties !== '' && <span>{empties}</span>}
+      <div>
+        <img src={LoginImage} />
+      </div>
+    </div>
     </div>
   );
 };
