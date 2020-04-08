@@ -65,18 +65,3 @@ const Comments = () => {debugger
 
 export default Comments;
 
-// {update ?  
-//   <div>          
-//     <input value={title} onChange={(e) => setUpdate(e.target.value)} /> 
-//     <button onClick={updateTitle}>Update</button>                      
-//   </div>                       
-//   : <h1 onClick={() => setUpdate(true)}>{elem.title}</h1>
-//   }
-
-// const updateTitle =  async (e) => {
-//   e.preventDefault(); 
-//   const result = await updatePost()
-//   if(result){
-//     setUpdate(false)      
-//   }
-// }
