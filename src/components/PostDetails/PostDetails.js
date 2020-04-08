@@ -23,6 +23,7 @@ const PostDetails = () => {
   const updatePostComment = async (e) => {
       e.preventDefault()
       const result = await updatePost(post_id, change)
+      // return result ? history.push({pathname: '/album/:_albumID'}) : setChange('the field is empty');
       return result ? history.push('/home') : setChange('the field is empty');
   }
 
