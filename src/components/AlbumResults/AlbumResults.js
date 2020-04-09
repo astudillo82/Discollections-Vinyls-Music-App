@@ -22,7 +22,7 @@ const AlbumResults = (props) => {
         <Link to={`/album/${master_id}`}>{title}</Link>    
         <p>{label}</p>
         <p>{year}</p>       
-      </div>
+      </div>     
     </div>
   );
 };

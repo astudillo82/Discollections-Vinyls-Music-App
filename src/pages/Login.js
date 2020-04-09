@@ -4,6 +4,8 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { logInUser } from '../logic/AuthUser';
+import './Login.scss';
+import LoginImage from '../../src/images/login-background.jpg'
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -26,23 +28,38 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>LOGIN USER</h1>
-      <form onSubmit={submittedForm}>
-        <div>
+    <div>    
+    <div className="login-page"> 
+      <div className="titles">
+        <h1 className="login-title">LOGIN USER</h1>
+        <p className="login-subtitle">Please fill in this form to login.</p>        
+      </div>  
+       
+      
+
+      <form className="login-form" onSubmit={submittedForm}>
+        <div className="login-email">
           <label htmlFor="email">EMAIL</label>
           <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
-        <div>
+        
+        <div className="login-password">
           <label htmlFor="password">PASSWORD</label>
           <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <button type="submit">LOG IN</button>
       </form>
-      <Link to="/">
-        <button type="button">GO BACK</button>
-      </Link>
+      
+      <div className="buttons">
+        <button className="login-button" type="submit">LOG IN</button>
+        <Link to="/">
+          <button className="go_back button" type="button">GO BACK</button>        
+        </Link>
+        </div>
       {empties !== '' && <span>{empties}</span>}
+      <div>
+        <img src={LoginImage} />
+      </div>
+    </div>
     </div>
   );
 };

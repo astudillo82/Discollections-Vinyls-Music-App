@@ -11,11 +11,11 @@ import AlbumResults from '../AlbumResults';
 import homeImage from '../../../src/home-background.jpg'
 import './Home.scss';
 
+
 const Home = () => {
   const [results, setResults] = useState({});
   const [input, setInput] = useState('');
   const [url, setUrl] = useState('');
-
 
   const getArtist = async () => {
     if(input !== ''){
@@ -75,3 +75,4 @@ const Home = () => {
 };
 
 export default Home;
+ 

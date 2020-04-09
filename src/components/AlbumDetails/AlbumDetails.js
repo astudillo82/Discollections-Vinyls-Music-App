@@ -1,12 +1,12 @@
-/* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import LogicMusic from '../../logic/LogicMusic';
-
+import Comments from '../Comments';
 
 const AlbumDetails = () => {debugger
   const [details, setDetails] = useState({});
   const { _albumId } = useParams();
+
 
   const getDetails = async () => {
     const newDetails = await LogicMusic.takeAlbumDetails(_albumId);
@@ -44,8 +44,9 @@ const AlbumDetails = () => {debugger
         return (       
         <p key={key}>{elem.position} {elem.title} {elem.duration} </p>
         )})}
-      </div>  
-   </div>     
+      </div> 
+      <Comments /> 
+   </div> 
   );
 };
 
