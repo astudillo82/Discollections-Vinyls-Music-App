@@ -24,8 +24,7 @@ function findArtist(input) {
     const query = `https://api.discogs.com/database/search?format=vinyl&artist=${input}&key=IDEzlChCVBuEmXtiHrJu&secret=eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS&page=1&per_page=25`;
 
     try {
-      const response = await axios.get(query);
-      // resolve(response.data.results);(CHECK!!!)
+      const response = await axios.get(query);   
       resolve(response.data);
     } catch (error) {
       reject(new Error('You have an error!!!'));
@@ -50,9 +49,8 @@ function searchFromUrl(url) {
 
 // ALBUM DETAILS(LINK TO)
 function albumDetails(_albumId) {
-  return new Promise(async (resolve, reject) => {
-    const query = `https://api.discogs.com/releases/${_albumId}?secret=${API_SECRET}&key=${API_KEY}`; //(CHECK!!!!)
-    // const query = `https://api.discogs.com/masters/${_albumId}?secret=${API_SECRET}&key=${API_KEY}`;
+  return new Promise(async (resolve, reject) => {    
+    const query = `https://api.discogs.com/masters/${_albumId}?secret=${API_SECRET}&key=${API_KEY}`;
 
     try {
       const response = await axios.get(query);
@@ -62,7 +60,6 @@ function albumDetails(_albumId) {
     }
   });
 }
-
 
 export {
   fetchMusic,
