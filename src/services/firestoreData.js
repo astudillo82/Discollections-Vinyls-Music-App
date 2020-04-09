@@ -16,10 +16,10 @@ const newPost = async  (createPost) => {
 }
 
 //GETTING(READING) DATA
-const posts = async () => {debugger
+const posts = async (id) => {
   const database = db ();
 
-  const querySnapshot = await database.collection('posts').get();
+  const querySnapshot = await database.collection('posts').where('id', '==', id).get();
   const allPost = [];
   querySnapshot.forEach((doc) => {
     allPost.push({
@@ -40,9 +40,9 @@ const postById = async (id) => {
 
 //UPDATE POST
 const updatePost = async (id,comment) => {
-    const database = db ();
-    const results = await database.collection('posts').doc(id).update({comment});
-    return typeof results === 'undefined';
+  const database = db ();
+  const results = await database.collection('posts').doc(id).update({comment});
+  return typeof results === 'undefined';
 }
 
 //DELETE POST

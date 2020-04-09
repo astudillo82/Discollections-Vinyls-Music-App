@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom'
 import { postById, updatePost } from '../../services/firestoreData'
 
+
 const PostDetails = () => {
   const { post_id } = useParams();
   const [postId, setPostId] = useState('')

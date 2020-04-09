@@ -4,8 +4,8 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { logInUser } from '../logic/AuthUser';
-import './Login.scss';
 import LoginImage from '../../src/images/login-background.jpg'
+import './Login.scss';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -33,9 +33,7 @@ const Login = () => {
       <div className="titles">
         <h1 className="login-title">LOGIN USER</h1>
         <p className="login-subtitle">Please fill in this form to login.</p>        
-      </div>  
-       
-      
+      </div>      
 
       <form className="login-form" onSubmit={submittedForm}>
         <div className="login-email">
@@ -46,15 +44,15 @@ const Login = () => {
         <div className="login-password">
           <label htmlFor="password">PASSWORD</label>
           <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-      </form>
-      
-      <div className="buttons">
-        <button className="login-button" type="submit">LOG IN</button>
-        <Link to="/">
-          <button className="go_back button" type="button">GO BACK</button>        
-        </Link>
-        </div>
+        </div>     
+        
+        <div className="buttons">
+          <button className="login-button" type="submit">LOG IN</button>
+          <Link to="/">
+            <button className="go_back button" type="button">GO BACK</button>        
+          </Link>
+          </div>
+        </form>
       {empties !== '' && <span>{empties}</span>}
       <div>
         <img src={LoginImage} />

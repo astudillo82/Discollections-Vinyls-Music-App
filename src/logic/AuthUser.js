@@ -9,7 +9,7 @@ export const registerUser = async (email, password) => {
   return { correct: false, message: result.message };
 };
 
-export const logInUser = async (email, password) => {
+export const logInUser = async (email, password) => {debugger
   const result = await logIn(email, password);
   if (result.correct) return { correct: true };
   return { correct: false, message: result.message };

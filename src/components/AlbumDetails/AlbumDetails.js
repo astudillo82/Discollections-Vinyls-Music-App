@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import LogicMusic from '../../logic/LogicMusic';
 import Comments from '../Comments';
 
-const AlbumDetails = () => {debugger
+const AlbumDetails = () => {
   const [details, setDetails] = useState({});
   const { _albumId } = useParams();
 
@@ -45,7 +45,7 @@ const AlbumDetails = () => {debugger
         <p key={key}>{elem.position} {elem.title} {elem.duration} </p>
         )})}
       </div> 
-      <Comments /> 
+      <Comments id={_albumId} /> 
    </div> 
   );
 };

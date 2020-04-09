@@ -3,7 +3,7 @@ import { posts, newPost } from '../../services/firestoreData';
 import { Link } from 'react-router-dom';
 
 
-const Comments = () => {debugger
+const Comments = ({id}) => {
   const [getPosts, setGetPosts] = useState([]);
 
   const [title, setTitle] = useState('');
@@ -13,7 +13,7 @@ const Comments = () => {debugger
 
   useEffect(() => {
   const fetch = async () => {
-      const databasePosts = await posts();
+      const databasePosts = await posts(id);
       setGetPosts(databasePosts);
   };
   fetch();
@@ -24,7 +24,8 @@ const Comments = () => {debugger
     const createPost = {
       title,
       name,
-      comment,      
+      comment,
+      id
     }   
    newPost(createPost);    
   };
