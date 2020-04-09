@@ -1,0 +1,25 @@
+.results {   
+    padding: 1rem;
+    
+    img {
+        margin-left: 6rem;
+        border-style: groove;
+    }
+
+    .specs {
+        text-align: center;
+        padding: 1rem;
+        font-size: 20px;
+
+        a { 
+         text-decoration: none;
+         color:white
+        }
+        a:visited, a:link {
+            text-decoration: none;
+        }
+        a:hover, a:active {
+            text-decoration: underline;
+        }         
+    }
+}

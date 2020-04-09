@@ -1,25 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './AlbumResults.scss'
 
 const AlbumResults = (props) => {
   const {
+    thumb,    
+    title,
+    year,
+    label,
     master_id,
     id,
-    year,
-    title,
-    thumb, 
-    label,
   } = props.item;
 
   return (
     <div className="results">
-      <img src={`${thumb}`} alt="title" className="artist_cover" title={title} />
-      <p>Title: {title}</p>
-      <p>Year: {year}</p>
-      <p>MASTER ID : {master_id}</p>
-      <p>ID : {id}</p>
-      <p>Label : {label}</p>
-      <Link to={`/album/${master_id}`}>See Album Details</Link>
+      <div>
+      <img src={`${thumb}`} alt="title" className="artist_cover" title={title} /><br/>
+      </div>
+
+      <div className="specs">
+        <Link to={`/album/${master_id}`}>{title}</Link>    
+        <p>{label}</p>
+        <p>{year}</p>       
+      </div>
     </div>
   );
 };

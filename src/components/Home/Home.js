@@ -5,8 +5,11 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { signOutUser } from '../../logic/AuthUser';
-import ItemArtist from '../AlbumResults';
+
 import LogicMusic from '../../logic/LogicMusic';
+import AlbumResults from '../AlbumResults';
+import homeImage from '../../../src/home-background.jpg'
+import './Home.scss';
 
 const Home = () => {
   const [results, setResults] = useState({});
@@ -15,9 +18,13 @@ const Home = () => {
 
 
   const getArtist = async () => {
-    // const newArtist = await LogicMusic.takeFindArtist(input);(CHECK!!!)
-    const newArtist = await LogicMusic.takeHomeArtist();
-    setResults(newArtist);
+    if(input !== ''){
+      const newArtist = await LogicMusic.takeFindArtist(input);
+      setResults(newArtist);
+    } else {
+        const newArtist = await LogicMusic.takeHomeArtist();
+        setResults(newArtist);
+    }    
   };
 
   useEffect(() => {
@@ -42,28 +49,26 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h1>DISCOLLECTION VINYLS MUSIC APP</h1>
+    <div className="home-page">       
+      <nav>
+        <h1>DISCOLLECTION VINYLS MUSIC APP</h1>       
+          <div className="search-artist">          
+              <input type="text" id="text" value={input} placeholder="Write artist..." onChange={(e) => setInput(e.target.value)} />         
+              <button className="search-button" type="button" onClick={getArtist}>SEARCH</button>
+          </div>    
+           <Link onClick={SignOut} to="/">SIGN OUT</Link>
+      </nav>
 
-      <Link onClick={SignOut} to="/">SIGN OUT</Link>
-
-      <div>
-        <div>
-          <label>
-            <input type="text" id="text" value={input} placeholder="Search Artist" onChange={(e) => setInput(e.target.value)} />
-          </label>
-        </div>
-        <button type="button" onClick={getArtist}>SEARCH</button>
+      <div className="album-results">
+        {results.results && results.results.map((elem) => <AlbumResults key={elem.id} item={elem} />)}
       </div>
 
-
-      <div className="group">
-        {results.results && results.results.map((elem) => <ItemArtist key={elem.id} item={elem} />)}
+      <div className="buttons">
+        <button  className="prev-button" type="button" className="prev-page" onClick={() => setUrl(results.pagination.urls.prev)}>PREV</button>
+        <button  className="next-button" type="button" className="next-page" onClick={() => setUrl(results.pagination.urls.next)}>NEXT</button>
       </div>
-
-      <div className="page-button">
-        <button type="button" className="prev-page" onClick={() => setUrl(results.pagination.urls.prev)}>PREV</button>
-        <button type="button" className="next-page" onClick={() => setUrl(results.pagination.urls.next)}>NEXT</button>
+      <div className="background">
+        <img src={homeImage} />
       </div>
     </div>
   );
