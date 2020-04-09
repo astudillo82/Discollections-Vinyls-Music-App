@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { signOutUser } from '../../logic/AuthUser';
-import ItemArtist from '../AlbumResults';
+import AlbumResults from '../AlbumResults';
 import LogicMusic from '../../logic/LogicMusic';
 
 
@@ -15,9 +15,13 @@ const Home = () => {
   const [url, setUrl] = useState('');
 
   const getArtist = async () => {
-    // const newArtist = await LogicMusic.takeFindArtist(input);(CHECK!!!)
-    const newArtist = await LogicMusic.takeHomeArtist();
-    setResults(newArtist);
+    if(input !== '') {
+      const newArtist = await LogicMusic.takeFindArtist(input);
+      setResults(newArtist);
+    } else {
+      const newArtist = await LogicMusic.takeHomeArtist();
+      setResults(newArtist);
+    }
   };
 
   useEffect(() => {
@@ -58,7 +62,7 @@ const Home = () => {
 
 
       <div className="group">
-        {results.results && results.results.map((elem) => <ItemArtist key={elem.id} item={elem} />)}
+        {results.results && results.results.map((elem) => <AlbumResults key={elem.id} item={elem} />)}
       </div>
 
       <div className="page-button">

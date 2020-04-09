@@ -18,41 +18,35 @@ const AlbumDetails = () => {
   }, []);
 
   const {
-    images: [{ uri } = {}] = [],
-    // thumb,
-    // artists_sort,
+    images: [{ uri150 } = {}] = [],
     artists: [{ name } = []] = [],
     title,
-    // released,
     year,
-    // country,
     styles,
-    // extraartists: [{ name } = {}] = [],
-    // labels: [{ name } = {}] = [],
-    // formats: [{ name } = {}] = [],
-    genres,
-    // tracklist: [{ title } = {}] = [],
+    genres,  
   } = details;
 
   return (
-    <>
+    <div>
       <div className="results">
         <h1>ALBUM DETAILS</h1>
-        <img src={uri} alt="title" className="artist_cover" title={title} />
+        <img src={uri150} alt="title" className="artist_cover" title={title} />
         <p> ARTIST : {name}</p>
-        <p> Title :{title}</p>
-        {/* <p>Year: {released}</p> */}
-        <p> Year: {year}</p>
-        {/* <p>country : {country}</p> */}
-        <p> styles : {styles} </p>
-        {/* <p>Credits : {name}</p> */}
-        {/* <p>Label : {name}</p> */}
-        {/* <p>Format: {name}</p> */}
-        <p> Genre: {genres} </p>
-        {/* <p>{`Tracklist: ${title}`}</p> */}
-      </div>      
-      <Comments />     
-    </>
+        <p> TITLE :{title}</p>
+        <p> STYLES : {styles} </p>
+        <p> YEAR: {year}</p>
+        <p> GENRE: {genres} </p>    
+      </div>   
+
+      <p>TRACKLIST</p><br/>    
+      <div className="album-results">
+        {details.tracklist && details.tracklist.map((elem, key) => {
+        return (       
+        <p key={key}>{elem.position} {elem.title} {elem.duration} </p>
+        )})}
+      </div>    
+      <Comments id={_albumId}/>
+    </div>
   );
 };
 

@@ -43,13 +43,15 @@ const Login = () => {
           <label htmlFor="password">PASSWORD</label>
           <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
-      </form>
       
-      <div className="buttons"></div>
+      
+      <div className="buttons">
         <button className="login-button" type="submit">LOG IN</button>
         <Link to="/">
           <button className="go_back button" type="button">GO BACK</button>
         </Link>
+        </div>
+      </form>
       {empties !== '' && <span>{empties}</span>}
     </div>
   );
