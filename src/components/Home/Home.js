@@ -8,7 +8,7 @@ import { signOutUser } from '../../logic/AuthUser';
 
 import LogicMusic from '../../logic/LogicMusic';
 import AlbumResults from '../AlbumResults';
-import homeImage from '../../../src/home-background.jpg'
+import homeImage from '../../../src/images/home-background.jpg'
 import './Home.scss';
 
 
