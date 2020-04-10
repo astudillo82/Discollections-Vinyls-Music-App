@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { posts, newPost } from '../../services/firestoreData';
 import { Link } from 'react-router-dom';
 
+
 const Comments = ({comment_id}) => {
   const [getPosts, setGetPosts] = useState([]);
 
@@ -24,9 +25,8 @@ const Comments = ({comment_id}) => {
       title,
       name,
       comment,
-      comment_id                  
-    }   
-    
+      comment_id
+    }    
    newPost(createPost);    
   };
 

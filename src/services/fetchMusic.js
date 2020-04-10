@@ -24,8 +24,7 @@ function findArtist(input) {
     const query = `https://api.discogs.com/database/search?format=vinyl&artist=${input}&key=IDEzlChCVBuEmXtiHrJu&secret=eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS&page=1&per_page=25`;
 
     try {
-      const response = await axios.get(query);
-      // resolve(response.data.results);(CHECK!!!)
+      const response = await axios.get(query);   
       resolve(response.data);
     } catch (error) {
       reject(new Error('You have an error!!!'));
@@ -61,7 +60,6 @@ function albumDetails(_albumId) {
     }
   });
 }
-
 
 export {
   fetchMusic,

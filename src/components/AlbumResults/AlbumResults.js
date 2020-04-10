@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './AlbumResults.scss'
 
 const AlbumResults = (props) => {
   const {
-    thumb, 
+    thumb,    
     title,
     year,
     label,

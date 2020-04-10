@@ -40,9 +40,9 @@ const postById = async (id) => {
 
 //UPDATE POST
 const updatePost = async (id,comment) => {
-    const database = db ();
-    const results = await database.collection('posts').doc(id).update({comment});
-    return typeof results === 'undefined';
+  const database = db ();
+  const results = await database.collection('posts').doc(id).update({comment});
+  return typeof results === 'undefined';
 }
 
 //DELETE POST

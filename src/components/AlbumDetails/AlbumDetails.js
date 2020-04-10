@@ -19,11 +19,11 @@ const AlbumDetails = () => {
 
   const {
     images: [{ uri150 } = {}] = [],
-    artists: [{ name } = []] = [],
+    artists: [{ name } = {}] = [],
     title,
     year,
     styles,
-    genres,  
+    genres,   
   } = details;
 
   return (
@@ -31,13 +31,13 @@ const AlbumDetails = () => {
       <div className="results">
         <h1>ALBUM DETAILS</h1>
         <img src={uri150} alt="title" className="artist_cover" title={title} />
-        <p> ARTIST : {name}</p>
-        <p> TITLE :{title}</p>
-        <p> STYLES : {styles} </p>
-        <p> YEAR: {year}</p>
-        <p> GENRE: {genres} </p>    
-      </div>   
-
+        <p>ARTIST : {name}</p>
+        <p>TITLE: {title}</p>   
+        <p>STYLES : {styles}</p>
+        <p>YEAR: {year}</p>
+        <p>GENRE: {genres}</p>             
+      </div>
+    
       <p>TRACKLIST</p><br/>    
       <div className="album-results">
         {details.tracklist && details.tracklist.map((elem, key) => {
@@ -51,3 +51,4 @@ const AlbumDetails = () => {
 };
 
 export default AlbumDetails;
+ 
