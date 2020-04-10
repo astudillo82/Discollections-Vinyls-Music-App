@@ -35,12 +35,12 @@ const Register = () => {
       <div className="titles">
         <h1 className="register-title">USER REGISTER</h1>
         <p className="register-subtitle">Please fill in this form to create an account.</p>
-      </div>  
-        
-      
+      </div> 
 
       <form className="register-form" onSubmit={submittedForm}>        
-        <div className="register-email">
+
+      <div className="form">
+        <div className="register-email">          
           <label htmlFor="email">EMAIL</label>
           <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
@@ -48,20 +48,20 @@ const Register = () => {
         <div className="register-password">
           <label htmlFor="password">PASSWORD</label>
           <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>       
-      </form>
+        </div>    
+      </div>      
 
       <div className="buttons">
           <button className="register-button" type="submit">REGISTER</button>  
           <Link to="/">
             <button className="go_back-button" type="button">GO BACK</button>
         </Link>               
-      </div>        
+      </div>   
+      </form>     
       {empties !== '' && <span>{empties}</span>}
       <div>
         <img src={RegisterImage} />
-      </div>
-     
+      </div>     
       </div>
     </div>
   );
