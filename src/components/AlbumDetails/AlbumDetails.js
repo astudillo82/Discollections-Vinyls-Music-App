@@ -45,7 +45,7 @@ const AlbumDetails = () => {
         <p key={key}>{elem.position} {elem.title} {elem.duration} </p>
         )})}
       </div>    
-      <Comments id={_albumId}/>
+      <Comments comment_id={_albumId}/>
     </div>
   );
 };

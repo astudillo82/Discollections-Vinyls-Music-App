@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { posts, newPost } from '../../services/firestoreData';
 import { Link } from 'react-router-dom';
 
-const Comments = ({id}) => {
+const Comments = ({comment_id}) => {
   const [getPosts, setGetPosts] = useState([]);
 
   const [title, setTitle] = useState('');
@@ -12,7 +12,7 @@ const Comments = ({id}) => {
 
   useEffect(() => {
   const fetch = async () => {
-      const databasePosts = await posts(id);
+      const databasePosts = await posts(comment_id);
       setGetPosts(databasePosts);
   };
   fetch();
@@ -24,8 +24,9 @@ const Comments = ({id}) => {
       title,
       name,
       comment,
-      id            
+      comment_id                  
     }   
+    
    newPost(createPost);    
   };
 

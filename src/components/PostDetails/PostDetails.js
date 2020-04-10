@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom'
-import { postById, updatePost } from '../../services/firestoreData'
+import { useParams, useHistory } from 'react-router-dom';
+import { postById, updatePost } from '../../services/firestoreData';
 
 const PostDetails = () => {debugger
   const { post_id } = useParams();
-  const [postId, setPostId] = useState('')
 
+  const [postId, setPostId] = useState('')
   const [edit, setEdit] = useState(false);
   const [change, setChange] = useState('')
 
