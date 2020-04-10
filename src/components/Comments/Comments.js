@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { posts, newPost, deletePost } from '../../services/firestoreData';
+import { posts, newPost } from '../../services/firestoreData';
+import { Link } from 'react-router-dom';
+
 
 const Comments = () => {debugger
   const [getPosts, setGetPosts] = useState([]);
@@ -7,7 +9,6 @@ const Comments = () => {debugger
   const [title, setTitle] = useState('');
   const [name, setName] = useState('');
   const [comment, setComment] = useState('');
-  const [update, setUpdate] = useState(false);
 
 
   useEffect(() => {
@@ -23,15 +24,10 @@ const Comments = () => {debugger
     const createPost = {
       title,
       name,
-      comment
+      comment,      
     }   
    newPost(createPost);    
   };
-
-  const deletePostSubmit = async() => {
-    const result = await deletePost()
-    return result;
-  }
 
   return (  
   <div>
@@ -56,10 +52,10 @@ const Comments = () => {debugger
     <div>
       {getPosts.map((elem) =>(
         <div className="posts" key={elem.id}>              
-          <h1>{elem.title}</h1>        
+          <h1><Link to={`/album/post/${elem.id}`}>{elem.title}</Link></h1>        
           <h2>{elem.name}</h2>
           <h3>{elem.comment}</h3>
-          <button onClick={deletePostSubmit}>DELETE</button>
+          <p>{elem.id}</p>          
         </div>
         ))}
     </div>
