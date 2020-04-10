@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom'
-import { postById, updatePost } from '../../services/firestoreData'
+import { useParams, useHistory } from 'react-router-dom';
+import { postById, updatePost } from '../../services/firestoreData';
 
 const PostDetails = () => {
   const { post_id } = useParams();
-  const [postId, setPostId] = useState('')
 
+  const [postId, setPostId] = useState('')
   const [edit, setEdit] = useState(false);
   const [change, setChange] = useState('')
 
@@ -23,6 +23,7 @@ const PostDetails = () => {
   const updatePostComment = async (e) => {
       e.preventDefault()
       const result = await updatePost(post_id, change)
+      // return result ? history.push({pathname: '/album/:_albumID'}) : setChange('the field is empty');
       return result ? history.push('/home') : setChange('the field is empty');
   }
 

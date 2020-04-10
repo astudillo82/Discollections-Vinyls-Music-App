@@ -3,7 +3,7 @@ import { posts, newPost } from '../../services/firestoreData';
 import { Link } from 'react-router-dom';
 
 
-const Comments = () => {debugger
+const Comments = ({comment_id}) => {
   const [getPosts, setGetPosts] = useState([]);
 
   const [title, setTitle] = useState('');
@@ -13,19 +13,20 @@ const Comments = () => {debugger
 
   useEffect(() => {
   const fetch = async () => {
-      const databasePosts = await posts();
+      const databasePosts = await posts(comment_id);
       setGetPosts(databasePosts);
   };
   fetch();
   }, []);
 
-  const postSubmit = (e) => {
+  const postSubmit = (e) => {debugger
     e.preventDefault()
     const createPost = {
       title,
       name,
-      comment,      
-    }   
+      comment,
+      comment_id
+    }    
    newPost(createPost);    
   };
 
@@ -65,18 +66,3 @@ const Comments = () => {debugger
 
 export default Comments;
 
-// {update ?  
-//   <div>          
-//     <input value={title} onChange={(e) => setUpdate(e.target.value)} /> 
-//     <button onClick={updateTitle}>Update</button>                      
-//   </div>                       
-//   : <h1 onClick={() => setUpdate(true)}>{elem.title}</h1>
-//   }
-
-// const updateTitle =  async (e) => {
-//   e.preventDefault(); 
-//   const result = await updatePost()
-//   if(result){
-//     setUpdate(false)      
-//   }
-// }
