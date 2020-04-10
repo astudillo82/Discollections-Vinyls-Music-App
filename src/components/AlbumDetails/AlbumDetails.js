@@ -37,16 +37,16 @@ const AlbumDetails = () => {
         <p>YEAR: {year}</p>
         <p>GENRE: {genres}</p>             
       </div>
-
+    
       <p>TRACKLIST</p><br/>    
       <div className="album-results">
         {details.tracklist && details.tracklist.map((elem, key) => {
         return (       
         <p key={key}>{elem.position} {elem.title} {elem.duration} </p>
         )})}
-      </div> 
-      <Comments id={_albumId} /> 
-   </div> 
+      </div>    
+      <Comments comment_id={_albumId}/>
+    </div>
   );
 };
 

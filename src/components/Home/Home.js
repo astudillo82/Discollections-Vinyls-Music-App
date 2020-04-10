@@ -24,7 +24,7 @@ const Home = () => {
     } else {
         const newArtist = await LogicMusic.takeHomeArtist();
         setResults(newArtist);
-    }    
+    } 
   };
 
   useEffect(() => {

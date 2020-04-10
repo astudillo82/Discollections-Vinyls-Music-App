@@ -16,13 +16,13 @@ const newPost = async  (createPost) => {
 }
 
 //GETTING(READING) DATA
-const posts = async (id) => {
+const posts = async (comment_id) => {
   const database = db ();
 
-  const querySnapshot = await database.collection('posts').where('id', '==', id).get();
+  const querySnapshot = await database.collection('posts').where('id','==', comment_id).get();
   const allPost = [];
   querySnapshot.forEach((doc) => {
-    allPost.push({
+    allPost.push({ 
       id: doc.id,
       ...doc.data(),
     });

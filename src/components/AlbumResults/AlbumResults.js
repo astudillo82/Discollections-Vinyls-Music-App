@@ -11,7 +11,7 @@ const AlbumResults = (props) => {
     master_id,
     id,
   } = props.item;
-
+  
   return (
     <div className="results">
       <div>
