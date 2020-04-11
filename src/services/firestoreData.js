@@ -3,7 +3,7 @@ import 'firebase/firestore';
 const db = () =>  firebase.firestore();
 
 
-//SAVING DATA
+//SAVING DATA (FIRESTORE DATABSE)
 const newPost = async  (createPost) => {
   const database = db ();
 
@@ -46,11 +46,11 @@ const updatePost = async (id,comment) => {
 }
 
 //DELETE POST
-const deletePost = async (id) => {
-  const database = db ();
-  const results = await database.collection('posts').doc(id).delete();
-  return typeof results === 'undefined';
-}
+// const deletePost = async (id) => {
+//   const database = db ();
+//   const results = await database.collection('posts').doc(id).delete();
+//   return typeof results === 'undefined';
+// }
 
 
 export {
@@ -58,6 +58,6 @@ export {
     newPost,
     postById,
     updatePost,
-    deletePost,
+    
 }
  
