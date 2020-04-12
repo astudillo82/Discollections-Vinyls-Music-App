@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import LogicMusic from '../../logic/LogicMusic';
 import Comments from '../Comments';
+import './AlbumDetails.scss'
 
 const AlbumDetails = () => {
   const [details, setDetails] = useState({});
@@ -17,6 +18,7 @@ const AlbumDetails = () => {
     getDetails();
   }, []);
 
+
   const {
     images: [{ uri150 } = {}] = [],
     artists: [{ name } = {}] = [],
@@ -28,22 +30,24 @@ const AlbumDetails = () => {
 
   return (
     <div>
-      <div className="results">
+      <div className="album-details">
         <h1>ALBUM DETAILS</h1>
-        <img src={uri150} alt="title" className="artist_cover" title={title} />
-        <p>ARTIST : {name}</p>
-        <p>TITLE: {title}</p>   
-        <p>STYLES : {styles}</p>
-        <p>YEAR: {year}</p>
-        <p>GENRE: {genres}</p>             
-      </div>
-    
-      <p>TRACKLIST</p><br/>    
-      <div className="album-results">
+        <img src={uri150} alt="title" className="artist_cover" title={title} />        
+        <div className='details'>
+          <p> ARTIST: {name}</p>
+          <p> TITLE: {title}</p>
+          <p> STYLES: {styles} </p>
+          <p> YEAR: {year}</p>
+          <p> GENRE: {genres}</p>
+       </div>
+
+      <div className="tracklist"><br/>
+        <h2>TRACKLIST</h2><br/>
         {details.tracklist && details.tracklist.map((elem, key) => {
         return (       
-        <p key={key}>{elem.position} {elem.title} {elem.duration} </p>
+        <p key={key}>{elem.position} - {elem.title} - {elem.duration} </p>
         )})}
+        </div> <br/>    
       </div>    
       <Comments albumId={albumId}/>
     </div>
