@@ -3,6 +3,7 @@ import { posts, newPost } from '../../services/firestoreData';
 import { Link, useHistory } from 'react-router-dom';
 import './Comments.scss';
 
+
 const Comments = ({comment_id}) => {
   const [getPosts, setGetPosts] = useState([]);
 
@@ -26,13 +27,10 @@ const Comments = ({comment_id}) => {
     const createPost = {
       title,
       name,
-      comment,      
+      comment,
       comment_id
-    }   
-  newPost(createPost);   
-  history.push({pathname: `/album/${comment_id}`}) 
-  // history.push(`/album/${comment_id}`)
-       
+    }    
+   newPost(createPost); 
   };
 
   return (  

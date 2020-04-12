@@ -6,13 +6,14 @@ import {
 } from '../services/fetchMusic';
 
 class LogicMusic {
+  static takeHomeArtist() {
+    return fetchMusic();
+  }
+  
   static takeFindArtist(input) {
     return findArtist(input);
   }
 
-  static takeHomeArtist() {
-    return fetchMusic();
-  }
 
   static takeSearchFromUrl(url) {
     return searchFromUrl(url);

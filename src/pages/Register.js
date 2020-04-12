@@ -5,6 +5,8 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { registerUser } from '../logic/AuthUser';
 import './Register.scss';
+import RegisterImage from '../../src/images/register-background.jpg'
+
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -28,11 +30,14 @@ const Register = () => {
 
 
   return (    
-    <div className="register">
-      <header>
+    <div>      
+      <div className="register-page">   
+      <div className="titles">
         <h1 className="register-title">USER REGISTER</h1>
         <p className="register-subtitle">Please fill in this form to create an account.</p>
-      </header>
+      </div>  
+        
+      
 
       <form className="register-form" onSubmit={submittedForm}>        
         <div className="register-email">
@@ -53,7 +58,11 @@ const Register = () => {
         </Link>               
       </div>        
       {empties !== '' && <span>{empties}</span>}
+      <div>
+        <img src={RegisterImage} />
+      </div>
      
+      </div>
     </div>
   );
 };
