@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { posts, newPost } from '../../services/firestoreData';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Comments.scss';
 
-
-const Comments = ({comment_id}) => {
+const Comments = ({albumId}) => {
   const [getPosts, setGetPosts] = useState([]);
 
   const [title, setTitle] = useState('');
@@ -14,21 +13,19 @@ const Comments = ({comment_id}) => {
 
   useEffect(() => {
   const fetch = async () => {
-      const databasePosts = await posts(comment_id);
+      const databasePosts = await posts(albumId);
       setGetPosts(databasePosts);
   };
   fetch();
   }, []);
 
-  const history = useHistory();
-
-  const postSubmit = (e) => {debugger
+  const postSubmit = (e) => {
     e.preventDefault()
     const createPost = {
       title,
       name,
       comment,
-      comment_id
+      albumId
     }    
    newPost(createPost); 
   };

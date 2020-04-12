@@ -3,17 +3,17 @@ import { useParams, useHistory } from 'react-router-dom';
 import { postById, updatePost } from '../../services/firestoreData';
 
 const PostDetails = () => {
-  const { post_id } = useParams();
+  const { postId } = useParams();
 
-  const [postId, setPostId] = useState('')
+  const [postData, setPostData] = useState('')
   const [edit, setEdit] = useState(false);
   const [change, setChange] = useState('')
 
   useEffect(() => {
     const fetch = async () => {
-      const id = await postById(post_id)
-      setChange({target:{value:postId.comment}})
-      setPostId(id);      
+      const post = await postById(postId)
+      setChange(postData.comment)
+      setPostData(post);      
     }
     fetch();
   },[])
@@ -22,26 +22,25 @@ const PostDetails = () => {
 
   const updatePostComment = async (e) => {
       e.preventDefault()
-      const result = await updatePost(post_id, change)
-      // return result ? history.push({pathname: '/album/:_albumID'}) : setChange('the field is empty');
-      return result ? history.push('/home') : setChange('the field is empty');
+      const result = await updatePost(postId, change)     
+      history.goBack ();      
   }
 
   return (
     <div>
       <div>
-        <h1>{postId.title}</h1>
-        <p>{postId.name}</p>
+        <h1>{postData.title}</h1>
+        <p>{postData.name}</p>
         {edit ?
           <div>
               <form onSubmit={updatePostComment}>
-                <input value={change.value} onChange={(e)=>setChange(e.target.value)} onBlur={updatePostComment}/>
+                <input value={change} onChange={(e)=>setChange(e.target.value)} />
                 <button>UPDATE COMMENTS</button>
               </form>
           </div> : 
-          <p onClick={()=>{setEdit(true)}}>{postId.comment}</p>
+          <p onClick={()=>{setEdit(true)}}>{postData.comment}</p>
         }
-        <p>{postId.id}</p>
+        <p>{postData.id}</p>
       </div>
     </div>   
   );

@@ -6,11 +6,11 @@ import './AlbumDetails.scss'
 
 const AlbumDetails = () => {
   const [details, setDetails] = useState({});
-  const { _albumId } = useParams();
+  const { albumId } = useParams();
 
 
   const getDetails = async () => {
-    const newDetails = await LogicMusic.takeAlbumDetails(_albumId);
+    const newDetails = await LogicMusic.takeAlbumDetails(albumId);
     setDetails(newDetails);
   };
 
@@ -32,8 +32,7 @@ const AlbumDetails = () => {
     <div>
       <div className="album-details">
         <h1>ALBUM DETAILS</h1>
-        <img src={uri150} alt="title" className="artist_cover" title={title} />
-        
+        <img src={uri150} alt="title" className="artist_cover" title={title} />        
         <div className='details'>
           <p> ARTIST: {name}</p>
           <p> TITLE: {title}</p>
@@ -48,9 +47,9 @@ const AlbumDetails = () => {
         return (       
         <p key={key}>{elem.position} - {elem.title} - {elem.duration} </p>
         )})}
-      </div> <br/>
-        <Comments comment_id={_albumId}/>
+        </div> <br/>    
       </div>    
+      <Comments albumId={albumId}/>
     </div>
   );
 };
