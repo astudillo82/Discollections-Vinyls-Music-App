@@ -5,11 +5,11 @@ import Comments from '../Comments';
 
 const AlbumDetails = () => {
   const [details, setDetails] = useState({});
-  const { _albumId } = useParams();
+  const { albumId } = useParams();
 
 
   const getDetails = async () => {
-    const newDetails = await LogicMusic.takeAlbumDetails(_albumId);
+    const newDetails = await LogicMusic.takeAlbumDetails(albumId);
     setDetails(newDetails);
   };
 
@@ -45,7 +45,7 @@ const AlbumDetails = () => {
         <p key={key}>{elem.position} {elem.title} {elem.duration} </p>
         )})}
       </div>    
-      <Comments comment_id={_albumId}/>
+      <Comments albumId={albumId}/>
     </div>
   );
 };
