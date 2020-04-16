@@ -16,7 +16,7 @@ const Main = () => {
     </div>
 
       <div className="main-page background">
-      <img src={MainImage} />
+      <img src={MainImage} alt='main-background' />
     </div>
    </div>
   );

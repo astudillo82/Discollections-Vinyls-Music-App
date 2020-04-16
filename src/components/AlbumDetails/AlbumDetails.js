@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import LogicMusic from '../../logic/LogicMusic';
 import Comments from '../Comments';
+import notFoundImage from '../../../src/images/404.png';
 import './AlbumDetails.scss'
 
 const AlbumDetails = () => {
   const [details, setDetails] = useState({});
   const { albumId } = useParams();
-
 
   const getDetails = async () => {
     const newDetails = await LogicMusic.takeAlbumDetails(albumId);
@@ -32,7 +32,8 @@ const AlbumDetails = () => {
     <div>
       <div className="album-details">
         <h1>ALBUM DETAILS</h1>
-        <img src={uri150} alt="title" className="artist_cover" title={title} />        
+        <img src={uri150 ? uri150 : notFoundImage } alt="title" className="artist_cover" title={title} />  
+        <button>ADD FAVORITE LIST</button>      
         <div className='details'>
           <p> ARTIST: {name}</p>
           <p> TITLE: {title}</p>

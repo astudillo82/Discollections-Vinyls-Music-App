@@ -3,8 +3,8 @@
 
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { logInUser } from '../logic/AuthUser';
-import LoginImage from '../../src/images/login-background.jpg'
+import { logInUser } from '../../logic/AuthUser';
+import LoginImage from '../../../src/images/login-background.jpg'
 import './Login.scss';
 
 const Login = () => {
@@ -24,7 +24,7 @@ const Login = () => {
     }
 
     const result = await logInUser(email, password);
-    return result.correct ? history.push('/home') : setEmpties('incorrect username and/or password.');
+    return result.correct ? history.push('/home') : setEmpties('Incorrect Username and/or Password.');
   };
 
   return (

@@ -3,12 +3,13 @@
 
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { registerUser } from '../logic/AuthUser';
+import { registerUser } from '../../logic/AuthUser';
+import RegisterImage from '../../../src/images/register-background.jpg'
 import './Register.scss';
-import RegisterImage from '../../src/images/register-background.jpg'
 
 
 const Register = () => {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [empties, setEmpties] = useState('');
@@ -19,12 +20,12 @@ const Register = () => {
     e.preventDefault();
     setEmpties('');
 
-    if (!email || !password) {
+    if (!name || !email || !password) {
       setEmpties('Please complete the fields');
       return;
     }
 
-    const result = await registerUser(email, password);
+    const result = await registerUser(name, email, password);
     return result.correct ? history.push('/') : setEmpties(result.message);
   };
 
@@ -37,9 +38,13 @@ const Register = () => {
         <p className="register-subtitle">Please fill in this form to create an account.</p>
       </div> 
 
-      <form className="register-form" onSubmit={submittedForm}>        
-
+      <form className="register-form" onSubmit={submittedForm}>
+        
       <div className="form">
+        <div className="register-name">          
+          <label htmlFor="name">NAME</label>
+          <input type="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+        </div>
         <div className="register-email">          
           <label htmlFor="email">EMAIL</label>
           <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
