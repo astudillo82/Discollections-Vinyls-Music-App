@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { signOutUser } from '../../logic/AuthUser';
+import { useSelector } from 'react-redux'
 
 import LogicMusic from '../../logic/LogicMusic';
 import AlbumResults from '../AlbumResults';
@@ -13,6 +14,7 @@ import './Home.scss';
 
 
 const Home = () => {
+  const user = useSelector(state=>state.user)
   const [results, setResults] = useState({});
   const [input, setInput] = useState('');
   const [url, setUrl] = useState('');
@@ -47,30 +49,32 @@ const Home = () => {
     const result = await signOutUser();
     return result ? history.push('/') : false;
   };
-
+  
   return (
-    <div className="home-page">       
-      <nav>
+    <div className="home-page">  
+      {user ? (     
+      <nav>    
         <h1>DISCOLLECTION VINYLS MUSIC APP</h1>       
           <div className="search-artist">          
               <input type="text" id="text" value={input} placeholder="Write artist..." onChange={(e) => setInput(e.target.value)} />         
               <button className="search-button" type="button" onClick={getArtist}>SEARCH</button>
+              
           </div>    
            <Link onClick={SignOut} to="/">SIGN OUT</Link>
       </nav>
-
+       ) : ( null )}
       <div className="album-results">
         {results.results && results.results.map((elem) => <AlbumResults key={elem.id} item={elem} />)}
       </div>
-
+     
       <div className="buttons">
         <button  className="prev-button" type="button" className="prev-page" onClick={() => setUrl(results.pagination.urls.prev)}>PREV</button>
         <button  className="next-button" type="button" className="next-page" onClick={() => setUrl(results.pagination.urls.next)}>NEXT</button>
       </div>
       <div className="background">
-        <img src={homeImage} />
+        <img src={homeImage} alt="home-brackground"/>
       </div>
-    </div>
+    </div>    
   );
 };
 

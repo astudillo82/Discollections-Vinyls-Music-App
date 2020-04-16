@@ -1,4 +1,10 @@
-textarea{
+.comments {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+ 
+
+  textarea{
     height:auto;
     max-width:600px;
     color:#999;
@@ -12,18 +18,40 @@ textarea{
     box-shadow:0px 0px 5px 1px rgba(0,0,0,0.1);
     padding:30px;
     -webkit-transition: height 2s ease;
-  -moz-transition: height 2s ease;
-  -ms-transition: height 2s ease;
-  -o-transition: height 2s ease;
-  transition: height 2s ease;
+    -moz-transition: height 2s ease;
+    -ms-transition: height 2s ease;
+    -o-transition: height 2s ease;
+    transition: height 2s ease;
   }
 
   input {
-    width: 130px;
+    background:transparent;
+    border:0;
+    border-bottom:1px solid #e74c3c;
+    padding:8px 0 5px 0;
+    width: 150%;
     -webkit-transition: width 0.5s ease-in-out;
     transition: width 0.5s ease-in-out;
+  }
+
+  input:focus {
+      width: 200%;
+      border:none;	
+      outline:none;
+       border-bottom:1px solid #e74c3c;      
+  }
 }
 
-input:focus {
-    width: 50%;
+.posts {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-style: solid;
+  margin: 0 20rem 0 20rem;
+
+  a {
+    text-decoration: none;
+  }
 }
+
+
