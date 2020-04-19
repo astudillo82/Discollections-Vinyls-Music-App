@@ -14,6 +14,7 @@ import PostDetails from './components/PostDetails/PostDetails';
 
 import { useDispatch } from 'react-redux'
 import  setUser  from './redux/actions/userActions';
+import AddFavorites from './components/AddFavorites';
 
 firebase.initializeApp(firebaseConfig);
 
@@ -29,13 +30,13 @@ function App() {
         console.log('User is logout..')
       }            
     });
-  }, []);
-  
+  }, []);  
  
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={Main} />
+        <Route exact path='/favorites' component={AddFavorites} />
         <Route exact path="/album/:albumId" component={AlbumDetails} />
         <Route exact path="/album/post/:postId" component={PostDetails} />
         <Route exact path="/home" component={Home} />

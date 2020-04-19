@@ -11,6 +11,7 @@ import LogicMusic from '../../logic/LogicMusic';
 import AlbumResults from '../AlbumResults';
 import homeImage from '../../../src/images/home-background.jpg'
 import './Home.scss';
+import AddFavorites from '../AddFavorites';
 
 
 const Home = () => {
@@ -18,6 +19,8 @@ const Home = () => {
   const [results, setResults] = useState({});
   const [input, setInput] = useState('');
   const [url, setUrl] = useState('');
+
+  const [add, setAdd]= useState(false)
 
   const getArtist = async () => {
     if(input !== ''){
@@ -58,6 +61,12 @@ const Home = () => {
           <div className="search-artist">          
               <input type="text" id="text" value={input} placeholder="Write artist..." onChange={(e) => setInput(e.target.value)} />         
               <button className="search-button" type="button" onClick={getArtist}>SEARCH</button>
+              {add && <AddFavorites/>}
+              <div>
+                <Link to={'/favorites'} onClick={() => setAdd(true)}>
+                    <button>SEE FAVORITES</button>
+                </Link>
+              </div>
               
           </div>    
            <Link onClick={SignOut} to="/">SIGN OUT</Link>
@@ -68,8 +77,8 @@ const Home = () => {
       </div>
      
       <div className="buttons">
-        <button  className="prev-button" type="button" className="prev-page" onClick={() => setUrl(results.pagination.urls.prev)}>PREV</button>
-        <button  className="next-button" type="button" className="next-page" onClick={() => setUrl(results.pagination.urls.next)}>NEXT</button>
+        <button className="prev-button" type="button" className="prev-page" onClick={() => setUrl(results.pagination.urls.prev)}>PREV</button>
+        <button className="next-button" type="button" className="next-page" onClick={() => setUrl(results.pagination.urls.next)}>NEXT</button>
       </div>
       <div className="background">
         <img src={homeImage} alt="home-brackground"/>

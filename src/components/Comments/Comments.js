@@ -4,22 +4,20 @@ import { Link } from 'react-router-dom';
 import { useSelector } from'react-redux';
 import './Comments.scss';
 
-const  Comments = ({albumId}) => {
+const Comments = ({albumId}) => {
   const user = useSelector(state=>state.user)
  
   const [getPosts, setGetPosts] = useState([]);
 
-  const [title, setTitle] = useState('');
-  // const [name, setName] = useState('');
+  const [title, setTitle] = useState(''); 
   const [comment, setComment] = useState('');
-
 
 useEffect(() => { 
   const unsubscribed = getSnapShot('posts', setGetPosts, albumId);
   return () => unsubscribed(); 
 }, []); 
 
-  const postSubmit = async (e) => { 
+  const postSubmit = async (e) => { debugger
     e.preventDefault()
    
     const createPost = { 

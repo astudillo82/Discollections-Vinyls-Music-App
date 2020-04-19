@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { newFavorite } from '../../services/firestoreData'
 import LogicMusic from '../../logic/LogicMusic';
 import Comments from '../Comments';
+
 import notFoundImage from '../../../src/images/404.png';
 import './AlbumDetails.scss'
 
-const AlbumDetails = () => {
+const AlbumDetails = () => { 
   const [details, setDetails] = useState({});
   const { albumId } = useParams();
 
@@ -18,8 +20,7 @@ const AlbumDetails = () => {
     getDetails();
   }, []);
 
-
-  const {
+  let {
     images: [{ uri150 } = {}] = [],
     artists: [{ name } = {}] = [],
     title,
@@ -28,12 +29,27 @@ const AlbumDetails = () => {
     genres,   
   } = details;
 
+  const addFavSubmit = async (e) => { 
+    e.preventDefault()
+      const createFavorite= {
+        uri150,
+        name,
+        title,
+        year
+      }
+      const result = await newFavorite('favorites', createFavorite)
+      return result
+    };
+     
+    
+
+ 
   return (
-    <div>
-      <div className="album-details">
+    <div>        
+      <div className="album-details">    
         <h1>ALBUM DETAILS</h1>
-        <img src={uri150 ? uri150 : notFoundImage } alt="title" className="artist_cover" title={title} />  
-        <button>ADD FAVORITE LIST</button>      
+        <img src={ uri150 ? uri150 : notFoundImage } alt="title" className="artist_cover" title={title} /> 
+        <button type="submit" onClick={addFavSubmit}>ADD FAVORITE LISTS</button>       
         <div className='details'>
           <p> ARTIST: {name}</p>
           <p> TITLE: {title}</p>
