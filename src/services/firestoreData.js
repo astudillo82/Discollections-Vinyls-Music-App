@@ -4,36 +4,67 @@ const db = () =>  firebase.firestore();
 
 
 //SAVING DATA (FIRESTORE DATABSE)
-const newPost = async  (reviews, createPost) => {
+const newPost = async  (reviews, createPost) => {debugger
   const database = db ();
 
   try {
     const results = await database.collection(reviews).add(createPost);     
     return results.id
-  } catch(error){
+  } catch (error){
     return null
   } 
 };
 
-
 //GETTING(READING) DATA
-const posts = async (reviews) => {
+// const posts = async (reviews) => {
+//   const database = db ();
+
+//   const querySnapshot = await database.collection(reviews).get();  
+//   const allPost = [];
+//   querySnapshot.forEach((doc) => {
+//     allPost.push({ 
+//       id: doc.id,
+//       ...doc.data(),
+//     });
+//   });
+//   return allPost;  
+// };
+
+
+
+//SAVING FAVS DATA
+const newFavorite = async (favorite, createFavorite) => {
+  const database = db ();
+  
+  try {
+    const results = await database.collection(favorite).add(createFavorite);
+    return results.id
+
+  } catch (error) {
+    return null
+  }
+};
+
+//GETTING(READING) FAVS DATA
+const favorites = async (favorite) => {
   const database = db ();
 
-  const querySnapshot = await database.collection(reviews).get();
-  const allPost = [];
+  const querySnapshot = await database.collection(favorite).get(); 
+
+  const allFavs = [];
+  console.log('favs: ', allFavs)
   querySnapshot.forEach((doc) => {
-    allPost.push({ 
+    allFavs.push({ 
       id: doc.id,
       ...doc.data(),
     });
   });
-  return allPost;  
+  return allFavs;  
 };
 
 
 //ONSNAPSHOP(REAL-TIME)
-const getSnapShot = (reviews, callback, albumId) => {
+const getSnapShot = (reviews, callback, albumId) => {debugger
   const database = db ();
   
 return database.collection(reviews)
@@ -88,8 +119,10 @@ const deletePost = async (reviews, id) => {
 
 
 export {
-    posts,
+    // posts,
     newPost,
+    newFavorite,
+    favorites,
     getSnapShot,
     newOneWithId,
     postById,
