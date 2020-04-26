@@ -1,22 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './AlbumResults.scss'; 
-import notFoundImage from '../../../src/images/404.png';
+import './AlbumResults.scss';
+import notFoundImage from '../../images/404.png';
 
-const AlbumResults = ({item}) => {  
-  const { thumb, title, year, label, master_id } = item 
-  
-  return (    
-    <div className="results">      
+const AlbumResults = ({ item }) => {
+  // const { thumb, title, year, label, master_id } = item;
+  const { thumb, title, year, label, master_id } = item;
+
+  return (
+    <div className="results">
       <div>
-        <img src={thumb ? thumb : notFoundImage} alt="title" className="artist_cover" title={title} /><br/>
+        <img src={thumb || notFoundImage} alt="title" className="artist_cover" title={title} />
+        <br />
       </div>
 
       <div className="specs">
-        <Link to={`/album/${master_id}`}>{title}</Link>    
+        {/* <Link to={`/album/${master_id}`}>{title}</Link> */}
+        <Link to={`/album/${master_id}`}>{title}</Link>
         <p>{label}</p>
-        <p>{year}</p>       
-      </div>     
+        <p>{year}</p>
+      </div>
     </div>
   );
 };

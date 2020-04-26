@@ -5,12 +5,19 @@
 
     .details{
         padding: 2rem 0 0 2rem;
+
+        .title{
+            float: left;
+        }
+        .content{
+            margin-left: 100px;                    
+        }
     }
 
     .tracklist {
         padding: 1rem 0 0 4rem;
         
-        h2{
+        h2 {
             text-align: center;
         }
     }

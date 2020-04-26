@@ -4,10 +4,10 @@ import authObserver from '../services/authObserver';
 import signOut from '../services/signOut';
 import { newOneWithId, postById } from '../services/firestoreData';
 
-export const registerUser = async (name, email, password) => {
+export const registerUser = async (name, email, password, favorites = []) => {debugger
   const result = await signUp(email, password);
   if (result.correct)  {
-    const profiles = await newOneWithId('profiles', { name, email }, result.id)
+    const profiles = await newOneWithId('profiles', { name, email, favorites }, result.id)
     return { correct: profiles };
   } else {
     return { correct: false, message: result.message };
@@ -15,7 +15,7 @@ export const registerUser = async (name, email, password) => {
 };
 
 export const logInUser = async (email, password) => {
-  const result = await logIn(email, password);
+  const result = await logIn(email, password );
   if (result.correct) return { correct: true };
   return { correct: false, message: result.message };
 };

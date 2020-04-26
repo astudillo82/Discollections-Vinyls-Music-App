@@ -9,11 +9,10 @@ class LogicMusic {
   static takeHomeArtist() {
     return fetchMusic();
   }
-  
+
   static takeFindArtist(input) {
     return findArtist(input);
   }
-
 
   static takeSearchFromUrl(url) {
     return searchFromUrl(url);

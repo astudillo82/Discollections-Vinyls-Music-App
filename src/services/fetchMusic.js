@@ -6,8 +6,9 @@ const API_SECRET = 'eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS';
 
 // HOME PAGE
 function fetchMusic() {
-  return new Promise(async (resolve, reject) => {
-    const query = 'https://api.discogs.com/database/search?format=vinyl&key=IDEzlChCVBuEmXtiHrJu&secret=eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS&page=1&per_page=20';
+  return new Promise(async (resolve, reject) => { debugger
+    // const query = 'https://api.discogs.com/database/search?format=vinyl&key=IDEzlChCVBuEmXtiHrJu&secret=eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS&page=1&per_page=25';
+    const query = 'https://api.discogs.com/database/search?format=vinyl&artist=pink floyd&key=IDEzlChCVBuEmXtiHrJu&secret=eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS&page=1&per_page=25';
 
     try {
       const response = await axios.get(query);
@@ -20,11 +21,11 @@ function fetchMusic() {
 
 // SEARCH BY ARTIST
 function findArtist(input) {
-  return new Promise(async (resolve, reject) => {
+  return new Promise(async (resolve, reject) => { debugger
     const query = `https://api.discogs.com/database/search?format=vinyl&artist=${input}&key=IDEzlChCVBuEmXtiHrJu&secret=eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS&page=1&per_page=25`;
 
     try {
-      const response = await axios.get(query);   
+      const response = await axios.get(query);
       resolve(response.data);
     } catch (error) {
       reject(new Error('You have an error!!!'));
@@ -48,9 +49,10 @@ function searchFromUrl(url) {
 }
 
 // ALBUM DETAILS(LINK TO)
-function albumDetails(_albumId) {
-  return new Promise(async (resolve, reject) => {    
-    const query = `https://api.discogs.com/masters/${_albumId}?secret=${API_SECRET}&key=${API_KEY}`;
+function albumDetails(album_Id) {
+  return new Promise(async (resolve, reject) => {debugger
+    // const query = `https://api.discogs.com/masters/${album_Id}?secret=${API_SECRET}&key=${API_KEY}`;
+    const query = `https://api.discogs.com/masters/${album_Id}?secret=${API_SECRET}&key=${API_KEY}`;
 
     try {
       const response = await axios.get(query);

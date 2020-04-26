@@ -1,18 +1,18 @@
 const defaultState = {
-    id: null,
-    name:null
-}
+  id: null,
+  name: null,
+};
 
 const userReducers = (state = defaultState, action) => {
-    switch(action.type) {         
-        case 'USER':
-            return  {
-                ...state,
-                ...action.payload     
-            }
-        default:
-              return state;    
-    }
-}; 
+  switch (action.type) {
+    case 'USER':
+      return {
+        ...state,
+        ...action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
 export default userReducers;
