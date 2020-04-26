@@ -65,7 +65,7 @@ const Register = () => {
       </form>     
       {empties !== '' && <span>{empties}</span>}
       <div>
-        <img src={RegisterImage} />
+        <img src={RegisterImage} alt="register"/>
       </div>     
       </div>
     </div>

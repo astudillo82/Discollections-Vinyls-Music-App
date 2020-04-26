@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { newFavorite } from '../../services/firestoreData'
+import { useSelector } from 'react-redux';
+import { myFavs, deleteFavs } from '../../services/firestoreData';
 import LogicMusic from '../../logic/LogicMusic';
 import Comments from '../Comments';
 
-import notFoundImage from '../../../src/images/404.png';
-import './AlbumDetails.scss'
+import notFoundImage from '../../images/404.png';
+import './AlbumDetails.scss';
 
-const AlbumDetails = () => { 
+const AlbumDetails = () => {
+  const user = useSelector((state) => state.user);
   const [details, setDetails] = useState({});
   const { albumId } = useParams();
 
@@ -20,56 +22,73 @@ const AlbumDetails = () => {
     getDetails();
   }, []);
 
-  let {
+  const {
     images: [{ uri150 } = {}] = [],
     artists: [{ name } = {}] = [],
     title,
     year,
     styles,
-    genres,   
+    genres,
   } = details;
 
-  const addFavSubmit = async (e) => { 
-    e.preventDefault()
-      const createFavorite= {
-        uri150,
-        name,
-        title,
-        year
-      }
-      const result = await newFavorite('favorites', createFavorite)
-      return result
-    };
-     
-    
+  const addFavSubmit = (e) => {
+    e.preventDefault();
+    myFavs('profiles', user.id, {
+      image: uri150,
+      name,
+      title,
+      year,
+      albumId,
+    });
+  };
 
- 
+  const handleDeleteFavorite = (e) => {
+    e.preventDefault();
+    deleteFavs('profiles', user.id, {
+      image: uri150,
+      name,
+      title,
+      year,
+      albumId,
+    });
+  };
+
+
   return (
-    <div>        
-      <div className="album-details">    
+    <div>
+      <div className="album-details">
         <h1>ALBUM DETAILS</h1>
-        <img src={ uri150 ? uri150 : notFoundImage } alt="title" className="artist_cover" title={title} /> 
-        <button type="submit" onClick={addFavSubmit}>ADD FAVORITE LISTS</button>       
-        <div className='details'>
-          <p> ARTIST: {name}</p>
-          <p> TITLE: {title}</p>
-          <p> STYLES: {styles} </p>
-          <p> YEAR: {year}</p>
-          <p> GENRE: {genres}</p>
-       </div>
+        <img src={uri150 || notFoundImage} alt="title" className="artist_cover" title={title} />
+        <button type="submit" onClick={addFavSubmit}>ADD FAVORITE LISTS</button>
+        <button type="button" onClick={handleDeleteFavorite}>DELETE FAVORITE</button>
+        <div className="details">
+          <p className="title">ARTIST: </p>
+          <p className="content">{name}</p>
+          <p className="title"> TITLE:</p>
+          <p className="content">{title}</p>
+          <p className="title"> STYLES:</p>
+          <p className="content">{styles}</p>
+          <p className="title"> YEAR:</p>
+          <p className="content">{year}</p>
+          <p className="title"> GENRE:</p>
+          <p className="content">{genres}</p>
+        </div>
 
-      <div className="tracklist"><br/>
-        <h2>TRACKLIST</h2><br/>
-        {details.tracklist && details.tracklist.map((elem, key) => {
-        return (       
-        <p key={key}>{elem.position} - {elem.title} - {elem.duration} </p>
-        )})}
-        </div> <br/>    
-      </div>    
-      <Comments albumId={albumId}/>
+        <div className="tracklist">
+          <br />
+          <h2>TRACKLIST</h2>
+          <br />
+          {details.tracklist && details.tracklist.map((elem) => {
+            return (
+              <p key={elem.id}>{elem.position} - {elem.title} - {elem.duration} </p>
+            );
+          })}
+        </div>
+        <br />
+      </div>
+      <Comments albumId={albumId} />
     </div>
   );
 };
 
 export default AlbumDetails;
- 
