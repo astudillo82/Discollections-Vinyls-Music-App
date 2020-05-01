@@ -3,21 +3,46 @@
     display: flex;
     justify-content: space-between;
     padding: 3rem;
-    background-color: crimson;
-   
-  }
-  
-  .search-artist {
-    display: flex;
-    justify-content: center;
-  
-  }
+    margin: 1rem;
+    background-color: crimson;   
+    font-size:25px;  
+
+    .favorite-button {
+      width: 11rem;
+      height: 50px;
+      cursor: pointer;
+      border: 3px solid transparent;
+      border-radius: 50px;
+      font-size:25px;
+    }
+
+    .favorite-button:hover {
+      background:
+        linear-gradient(-45deg, #2ae88a 0%, #08aeea 100%) border-box;
+    }
+    
+    .search-artist {
+      input {
+        height: 2rem;
+        width: 15rem;
+        border-radius: 10px 0 0 10px;
+        outline: none;
+      }      
+    }
+    
+    .search-button {
+      outline: none;
+      height: 2rem;
+      width: 5rem;
+      border-radius: 0 10px 10px 0;
+    }
+  } 
   
   .album-results {
-      display: grid;
-      grid-template-columns: 20% 20% 20% 20% 20%;
-      padding: 3rem;
-    }
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    padding: 3rem;
+  }
   
     .buttons{
       display: flex;
@@ -64,6 +89,7 @@
         right: 10px;
       }
     }
+    
     .background img{
       position: fixed;
       top: 0;
@@ -71,6 +97,6 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-  }
+    }
 }
 

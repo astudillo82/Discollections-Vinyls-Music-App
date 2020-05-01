@@ -1,0 +1,28 @@
+.post-details{
+    font-size:2rem;
+    padding: 2rem;
+
+    input {
+        height: 1.5rem;
+        width: 15rem;
+        margin: 1rem;
+    }
+
+    textarea {
+        width: 50%;       
+        margin: 1rem;
+        padding: 30px;
+        font-size: 2rem;
+    }
+
+        button {
+        width: 11rem;
+        height: 2.5rem;
+        cursor: pointer;
+        border: 3px solid;
+        border-radius: 50px;
+        font-size: 20px;
+        outline: none;
+        margin-left:1rem
+    }
+}

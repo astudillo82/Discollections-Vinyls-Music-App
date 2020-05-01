@@ -2,8 +2,10 @@
   display: flex;
   align-items: center;
   flex-direction: column;
- 
-
+  color: rgb(109, 146, 115);
+  font-size: 1rem;
+  color: white;
+  
   textarea{
     height:auto;
     max-width:600px;
@@ -15,30 +17,55 @@
     border-radius:3px;
     line-height:2em;
     border:none;
+    margin: 2rem;
     box-shadow:0px 0px 5px 1px rgba(0,0,0,0.1);
     padding:30px;
     -webkit-transition: height 2s ease;
     -moz-transition: height 2s ease;
     -ms-transition: height 2s ease;
     -o-transition: height 2s ease;
-    transition: height 2s ease;
+    transition: height 2s ease;   
   }
+  
+  
 
   input {
     background:transparent;
     border:0;
     border-bottom:1px solid #e74c3c;
     padding:8px 0 5px 0;
-    width: 150%;
+    width: 120%;
     -webkit-transition: width 0.5s ease-in-out;
-    transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;   
+    font-size: 1.5rem; 
+    color: white;      
   }
 
+  ::placeholder {
+    color:red;
+  }
+
+  .text-area {
+      ::placeholder {
+      color:red;
+    }
+  }
+  
   input:focus {
       width: 200%;
       border:none;	
       outline:none;
-       border-bottom:1px solid #e74c3c;      
+      border-bottom:1px solid #e74c3c;      
+  }
+
+  button {
+    width: 11rem;
+    height: 2.5rem;
+    cursor: pointer;
+    border: 3px solid;
+    border-radius: 50px;
+    font-size:25px;
+    outline: none;
   }
 }
 
@@ -48,6 +75,9 @@
   flex-direction: column;
   border-style: solid;
   margin: 0 20rem 0 20rem;
+  background-color: tan;
+  padding:1rem;
+  margin: 3rem 3rem;
 
   a {
     text-decoration: none;
@@ -55,3 +85,43 @@
 }
 
 
+.star-rating {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.star {
+cursor: pointer;
+width: 2em;
+height: 2em;
+background-color: grey;
+-webkit-clip-path: polygon(
+    50% 0%,
+    63% 38%,
+    100% 38%,
+    69% 59%,
+    82% 100%,
+    50% 75%,
+    18% 100%,
+    31% 59%,
+    0% 38%,
+    37% 38%
+);
+
+clip-path: polygon(
+    50% 0%,
+    63% 38%,
+    100% 38%,
+    69% 59%,
+    82% 100%,
+    50% 75%,
+    18% 100%,
+    31% 59%,
+    0% 38%,
+    37% 38%
+);
+}
+
+.star.selected {
+background-color: yellow;
+}

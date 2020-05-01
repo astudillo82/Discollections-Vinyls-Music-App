@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { postById, updatePost } from '../../services/firestoreData';
+import { postById, updatePost, deletePost } from '../../services/firestoreData';
+import Footer from '../Footer';
+import postImage from '../../images/post-background.jpg';
+import './PostDetails.scss';
 
 const PostDetails = () => {
   const { postId } = useParams();
@@ -8,50 +11,75 @@ const PostDetails = () => {
 
   const [postData, setPostData] = useState('');
   const [edit, setEdit] = useState(false);
-  const [change, setChange] = useState('');
+
+  const [title, setTitle] = useState('');
+  const [comment, setComment] = useState('');
 
   useEffect(() => {
     const fetch = async () => {
       const post = await postById('posts', postId);
-      setChange(postData.comment);
+      setTitle(postData.title);
+      setComment(postData.comment);
       setPostData(post);
     };
     fetch();
   }, []);
 
+
   const updatePostComment = async (e) => {
     e.preventDefault();
-    const result = await updatePost('posts', postId, change);
+    const updateTitle = title !== undefined ? title : postData.title;
+    const updateComment = comment !== undefined ? comment : postData.comment;
+
+    const result = await updatePost('posts', postId, { updateTitle, updateComment });
+    return result ? history.goBack() : false;
+  };
+
+  const deletePostSubmit = async () => {
+    const result = await deletePost('posts', postId);
     return result ? history.goBack() : false;
   };
 
   return (
     <div>
-      <div>
-        <h1>{postData.title}</h1>
-        {/* {edit ?
+      <div className="post-details">
+        <h1>YOU CAN MODIFY SOME FIELDS...</h1>
+        <p>
+          USER:
+          { postData.user }
+        </p>
+        {edit ? (
           <div>
-              <form onSubmit={updatePostComment}>
-                <input value={change} onChange={(e)=>setChange(e.target.value)} />
-                <button>UPDATE TITLE</button>
-              </form>
-          </div> :
-          <p onClick={()=>{setEdit(true)}}>{postData.title}</p>
-        } */}
-
-        <p>{postData.user}</p>
+            <form onSubmit={updatePostComment}>
+              <input value={title} onChange={(e) => setTitle(e.target.value)} />
+            </form>
+          </div>
+        )
+          : <p title="click me" onClick={() => { setEdit(true) }}>EDIT TITLE: {postData.title}</p>}
 
         {edit ? (
           <div>
             <form onSubmit={updatePostComment}>
-              <input value={change || ''} onChange={(e) => setChange(e.target.value)} />
-              <button type="button">UPDATE COMMENTS</button>
+              <textarea value={comment} onChange={(e) => setComment(e.target.value)} />
+              <div className="submit-button">
+                <button type="submit">UPDATE COMMENTS</button>
+              </div>
             </form>
           </div>
         )
-          : <p onClick={() => {setEdit(true) }}>{postData.comment}</p>}
-        {/* <p>{postData.id}</p> */}
+          : <p title="click me" onClick={() => { setEdit(true) }}>EDIT REVIEW: {postData.comment}</p>}
+
+        <div className="delete-button">
+          <button type="submit" onClick={deletePostSubmit}>Delete Review</button>
+        </div>
+
+        <button className="go_back-button" type="button" onClick={() => history.goBack()}>GO BACK</button>
+
       </div>
+      <div className="background">
+        <img src={postImage} alt="post-brackground" />
+      </div>
+      <Footer />
     </div>
   );
 };

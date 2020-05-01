@@ -4,11 +4,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 import { signOutUser } from '../../logic/AuthUser';
 
 import LogicMusic from '../../logic/LogicMusic';
 import AlbumResults from '../AlbumResults';
+import Footer from '../Footer';
 import homeImage from '../../images/home-background.jpg';
 import './Home.scss';
 
@@ -58,16 +59,15 @@ const Home = () => {
           <div className="search-artist">
             <input type="text" id="text" value={input} placeholder="Write artist..." onChange={(e) => setInput(e.target.value)} />
             <button className="search-button" type="button" onClick={getArtist}>SEARCH</button>
-
-            <div>
-              <Link to="/favorites">
-                <button type="button">SEE FAVORITES</button>
-              </Link>
-            </div>
-
           </div>
+
+          <Link to="/favorites">
+            <button className="favorite-button" type="button">SEE FAVORITES</button>
+          </Link>
+
           <Link onClick={SignOut} to="/">SIGN OUT</Link>
         </nav>
+
       ) : (null)}
       <div className="album-results">
         {results.results && results.results.map((elem) => <AlbumResults key={elem.id} item={elem} />)}
@@ -77,9 +77,11 @@ const Home = () => {
         <button className="prev-button" type="button" onClick={() => setUrl(results.pagination.urls.prev)}>PREV</button>
         <button className="next-button" type="button" onClick={() => setUrl(results.pagination.urls.next)}>NEXT</button>
       </div>
+
       <div className="background">
         <img src={homeImage} alt="home-brackground" />
       </div>
+      <Footer />
     </div>
   );
 };
