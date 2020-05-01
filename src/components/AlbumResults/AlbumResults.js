@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import './AlbumResults.scss';
 import notFoundImage from '../../images/404.png';
 
-const AlbumResults = ({ item }) => {
-  // const { thumb, title, year, label, master_id } = item;
-  const { thumb, title, year, label, master_id } = item;
-
+const AlbumResults = ({ item }) => { 
+  const { thumb, title, year, label, master_id, id } = item;
+  const link = master_id != 0 ? `masters-${master_id}` : `releases-${id}`;
   return (
     <div className="results">
       <div>
@@ -15,10 +14,11 @@ const AlbumResults = ({ item }) => {
       </div>
 
       <div className="specs">
-        {/* <Link to={`/album/${master_id}`}>{title}</Link> */}
-        <Link to={`/album/${master_id}`}>{title}</Link>
-        <p>{label}</p>
-        <p>{year}</p>
+        <Link to={`/album/${link}`}>{title}</Link>
+        <br />
+        <p className="label">{label}</p>
+        <br />
+        <p className="year">{year}</p>
       </div>
     </div>
   );

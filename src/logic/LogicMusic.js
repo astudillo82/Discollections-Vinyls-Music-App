@@ -18,10 +18,10 @@ class LogicMusic {
     return searchFromUrl(url);
   }
 
-  static takeAlbumDetails(album_id) {
-    return albumDetails(album_id);
+  static takeAlbumDetails(id) {     //masters-123
+    const splitId = id.split('-'); //[masters,123]
+    return albumDetails(splitId[0], splitId[1]);
   }
-
 }
 
 export default LogicMusic;

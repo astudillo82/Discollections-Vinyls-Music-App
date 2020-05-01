@@ -4,7 +4,7 @@ import 'firebase/firestore';
 const db = () => firebase.firestore();
 
 // POSTS
-// SAVING DATA (FIRESTORE DATABSE)
+// SAVING DATA (FIRESTORE DATABASE)
 const newPost = async (reviews, createPost) => {
   const database = db();
 
@@ -34,55 +34,13 @@ const getSnapShot = (reviews, callback, albumId) => {
     });
 };
 
-// FAVORITES
-// SAVING FAVS DATA(FIRESTORE DATABASE)
-// const newFavorite = async (favorite, createFavorite) => {
-//   const database = db ();
-//   try {
-//     const results = await database.collection(favorite).add(createFavorite);
-//     return results.id
-
-//   } catch (error) {
-//     return null
-//   }
-// };
-
-// //ONSNAPSHOP(REAL-TIME) FAVS
-// const getSnapShotFav = (callback) => {
-//   const database = db ();
-  
-// return database.collection('favorites')
-// .onSnapshot((querySnapshot) => {
-//     const allFavs = [];
-
-//     querySnapshot.forEach((doc) => {
-//       allFavs.push({
-//         id: doc.id,
-//         ...doc.data(),
-//       });
-//     });
-//     callback(allFavs)
-//   })
-// };
-
-// //CREATE NEW FAVORITE WITH ID
-// const newFavWithId = async (favorite, createFavorite, id) => {
-//   const database = db();
-
-//   try {
-//     const results = await database.collection(favorite).doc(id).set(createFavorite);
-//     return typeof results === 'undefined';
-//   } catch (error) {
-//     return null
-//   }
-// };
-
 
 // UPDATE FAVORITES
-const myFavs = async (collection, id, { image, name, title, year, albumId }) => {
+const addFavs = async (profile, id, { image, name, title, year, albumId }) => {
   const database = db();
+
   try {
-    const results = await database.collection(collection).doc(id)
+    const results = await database.collection(profile).doc(id)
       .update({
         favorites: firebase.firestore.FieldValue.arrayUnion(
           { image, name, title, year, albumId })});
@@ -93,10 +51,10 @@ const myFavs = async (collection, id, { image, name, title, year, albumId }) => 
 };
 
 // DELETE FAVORITES
-const deleteFavs = async (collection, id,{ image, name, title, year, albumId }) => {debugger
+const deleteFavs = async (profile, id,{ image, name, title, year, albumId }) => {
   const database = db();
   try {
-    const results = await database.collection(collection).doc(id)
+    const results = await database.collection(profile).doc(id)
       .update({
         favorites: firebase.firestore.FieldValue.arrayRemove(
           { image, name, title, year, albumId })});
@@ -114,16 +72,16 @@ const postById = async (reviews, id) => {
   return results.exists ? { id, ...results.data() } : null;
 };
 
-
 // UPDATE POST
-const updatePost = async (reviews, id, comment) => {
+const updatePost = async (reviews, id, { updateTitle, updateComment }) => {
   const database = db();
-  const results = await database.collection(reviews).doc(id).update({ comment });
+  const results = await database.collection(reviews).doc(id).update(
+    { title: updateTitle, comment: updateComment });
   return typeof results === 'undefined';
 };
 
 // CREATE NEW WITH ID
-const newOneWithId = async (reviews, createPost, id) => {debugger
+const newOneWithId = async (reviews, createPost, id) => {
   const database = db();
   try {
     const results = await database.collection(reviews).doc(id).set(createPost);
@@ -144,13 +102,10 @@ const deletePost = async (reviews, id) => {
 export {
   newPost,
   getSnapShot,
-  // newFavorite,
-  // getSnapShotFav,
   newOneWithId,
-  // newFavWithId,
   postById,
   updatePost,
-  myFavs,
+  addFavs,
   deletePost,
   deleteFavs,
 };

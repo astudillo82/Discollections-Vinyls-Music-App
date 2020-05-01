@@ -4,6 +4,7 @@
     img {
         margin-left: 6rem;
         border-style: groove;
+        box-shadow: 0 0 10px 0 black;
     }
 
     .specs {
@@ -15,11 +16,34 @@
          text-decoration: none;
          color:white
         }
+
         a:visited, a:link {
+            background:
+            linear-gradient(
+              to bottom, var(--mainColor) 0%,
+              var(--mainColor) 100%
+            );
+            background-position: 0 100%;
+            background-repeat: repeat-x;
+            background-size: 4px 4px;
+            color: white;
             text-decoration: none;
         }
-        a:hover, a:active {
-            text-decoration: underline;
-        }         
+
+        a:hover {
+            background: none;
+            color: rgb(223, 27, 27);
+            font-family: 'Creepster', serif;
+            font-size: 1.2em;
+            letter-spacing: 3px;
+            line-height: .75em;
+        }     
+
+        .label {
+            color:white;
+        }
+        .year{
+            color: white;
+        }
     }
 }

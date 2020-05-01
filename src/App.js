@@ -14,7 +14,7 @@ import AlbumDetails from './components/AlbumDetails/AlbumDetails';
 import PostDetails from './components/PostDetails/PostDetails';
 
 import setUser from './redux/actions/userActions';
-import AddFavorites from './components/AddFavorites';
+import Favorites from './components/Favorites';
 
 firebase.initializeApp(firebaseConfig);
 
@@ -23,8 +23,8 @@ function App() {
   useEffect(() => {
     registerAuthObserver(async (user) => {
       if (user) {
-        const profiles = await userById(user.uid);
-        dispatch(setUser(profiles));
+        const profile = await userById(user.uid);
+        dispatch(setUser(profile));
       } else {
         dispatch(setUser(null));
         console.log('User is logout..');
@@ -36,13 +36,12 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={Main} />
-        <Route exact path="/favorites" component={AddFavorites} />
-        {/* <Route exact path="/album/:albumId" component={AlbumDetails} /> */}
-        <Route exact path="/album/:albumId" component={AlbumDetails} />
-        <Route exact path="/album/post/:postId" component={PostDetails} />
-        <Route exact path="/home" component={Home} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/favorites" component={Favorites} />
+        <Route exact path="/album/:albumId" component={AlbumDetails} />
+        <Route exact path="/album/post/:postId" component={PostDetails} />
       </Switch>
     </Router>
   );

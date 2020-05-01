@@ -6,9 +6,8 @@ const API_SECRET = 'eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS';
 
 // HOME PAGE
 function fetchMusic() {
-  return new Promise(async (resolve, reject) => { debugger
-    // const query = 'https://api.discogs.com/database/search?format=vinyl&key=IDEzlChCVBuEmXtiHrJu&secret=eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS&page=1&per_page=25';
-    const query = 'https://api.discogs.com/database/search?format=vinyl&artist=pink floyd&key=IDEzlChCVBuEmXtiHrJu&secret=eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS&page=1&per_page=25';
+  return new Promise(async (resolve, reject) => {
+    const query = 'https://api.discogs.com/database/search?format=vinyl&key=IDEzlChCVBuEmXtiHrJu&secret=eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS&page=1&per_page=25';
 
     try {
       const response = await axios.get(query);
@@ -21,7 +20,7 @@ function fetchMusic() {
 
 // SEARCH BY ARTIST
 function findArtist(input) {
-  return new Promise(async (resolve, reject) => { debugger
+  return new Promise(async (resolve, reject) => {
     const query = `https://api.discogs.com/database/search?format=vinyl&artist=${input}&key=IDEzlChCVBuEmXtiHrJu&secret=eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS&page=1&per_page=25`;
 
     try {
@@ -32,7 +31,6 @@ function findArtist(input) {
     }
   });
 }
-
 
 // NEXT URL
 function searchFromUrl(url) {
@@ -49,10 +47,9 @@ function searchFromUrl(url) {
 }
 
 // ALBUM DETAILS(LINK TO)
-function albumDetails(album_Id) {
-  return new Promise(async (resolve, reject) => {debugger
-    // const query = `https://api.discogs.com/masters/${album_Id}?secret=${API_SECRET}&key=${API_KEY}`;
-    const query = `https://api.discogs.com/masters/${album_Id}?secret=${API_SECRET}&key=${API_KEY}`;
+function albumDetails(type, album_Id) {
+  return new Promise(async (resolve, reject) => {
+    const query = `https://api.discogs.com/${type}/${album_Id}?secret=${API_SECRET}&key=${API_KEY}`;
 
     try {
       const response = await axios.get(query);
