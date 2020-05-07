@@ -13,14 +13,14 @@ import Footer from '../Footer';
 import homeImage from '../../images/home-background.jpg';
 import './Home.scss';
 
-const Home = () => {
+const Home = () => {debugger
   const user = useSelector((state) => state.user);
 
   const [results, setResults] = useState({});
   const [input, setInput] = useState('');
   const [url, setUrl] = useState('');
 
-  const getArtist = async () => {
+  const getArtist = async () => {debugger
     if (input !== '') {
       const newArtist = await LogicMusic.takeFindArtist(input);
       setResults(newArtist);
@@ -51,11 +51,15 @@ const Home = () => {
     return result ? history.push('/') : false;
   };
 
+  
   return (
     <div className="home-page">
       {user ? (
         <nav>
-          <h1>DISCOLLECTION VINYLS MUSIC APP</h1>
+          <div className="nav-titles">
+            <h1>DISCOLLECTION VINYLS MUSIC APP</h1>
+            <h3>WELCOME {user.name} </h3>
+          </div>
           <div className="search-artist">
             <input type="text" id="text" value={input} placeholder="Write artist..." onChange={(e) => setInput(e.target.value)} />
             <button className="search-button" type="button" onClick={getArtist}>SEARCH</button>

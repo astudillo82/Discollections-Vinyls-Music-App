@@ -24,7 +24,7 @@ const Login = () => {
     }
 
     const result = await logInUser(email, password);
-    return result.correct ? history.push('/home') : setEmpties('Incorrect Username and/or Password.');
+    return result.correct ? history.push('/home') : setEmpties('Incorrect email and/or Password.');
   };
 
   return (
@@ -55,6 +55,7 @@ const Login = () => {
               <button className="go_back button" type="button">GO BACK</button>
             </Link>
           </div>
+
         </form>
         {empties !== '' && <span>{empties}</span>}
         <div>

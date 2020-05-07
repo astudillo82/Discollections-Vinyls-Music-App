@@ -12,6 +12,7 @@ import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
 import AlbumDetails from './components/AlbumDetails/AlbumDetails';
 import PostDetails from './components/PostDetails/PostDetails';
+import ArtistProfile from './components/ArtistProfile/ArtistProfile';
 
 import setUser from './redux/actions/userActions';
 import Favorites from './components/Favorites';
@@ -41,6 +42,7 @@ function App() {
         <Route exact path="/home" component={Home} />
         <Route exact path="/favorites" component={Favorites} />
         <Route exact path="/album/:albumId" component={AlbumDetails} />
+        <Route exact path="/artist/profile/:id" component={ArtistProfile} />
         <Route exact path="/album/post/:postId" component={PostDetails} />
       </Switch>
     </Router>

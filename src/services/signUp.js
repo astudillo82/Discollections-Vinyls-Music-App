@@ -10,4 +10,3 @@ async function signUp(email, password) {
 }
 
 export default signUp;
-  

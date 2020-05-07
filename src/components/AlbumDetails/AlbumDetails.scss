@@ -1,45 +1,85 @@
-.box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding:2rem;
-    color:white;
-
-    .album-details {
+.album-details {
+    padding: 2rem;
+     nav {
+        border: 3px solid; 
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        padding: 3rem;
+        margin: 1rem;
+        background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(255,0,0,1));
+
+        .nav__button {
+            width: 6rem;
+            height: 2rem;
+            cursor: pointer;
+            border: 3px solid;
+            border-radius: 50px;
+            font-size: 18px;
+            // outline: none;
+            // position: relative;
+            right: 3rem;
+        } 
+     }
+
+    .main {
+        display: flex;
+        justify-content: center;
+        margin-top: 4rem;
+
+        .center {
+            .center__image {
+                max-width: 350px;
+                border-style: groove;
+                box-shadow: 10px 10px 10px 0  black
+            }
+
+            .button{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 2rem;
+            }
+
+        .button-style {
+            width: 15rem;
+            height: 2rem;
+            cursor: pointer;
+            border: 3px solid;
+            border-radius: 50px;
+            font-size: 18px;
+            outline: none;           
+        } 
     }
 
-    .details{
-        padding-left: 2rem;
+        .tracklist {
+            display: flex;
+            flex-direction: column;
+            margin: 1rem 0 0 3rem;
+            color:white;
+            font-size:25px;
+        }
+    }
+
+    .details {       
+        padding: 2rem;
         font-size: 1.5rem;
+        color:white;
         
-        .title{
+        .details__title {
             float: left;
         }
-        .content{
+        .details__content {
             margin-left: 100px;                    
         }
-    }
+    } 
+
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }     
 }
 
-.tracklist {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color:white;
-    font-size: 1.5rem;
-    
-    h2 {
-        text-align: center;
-    }
-}
-
-.background img{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}

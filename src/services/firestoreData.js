@@ -5,7 +5,7 @@ const db = () => firebase.firestore();
 
 // POSTS
 // SAVING DATA (FIRESTORE DATABASE)
-const newPost = async (reviews, createPost) => {
+const newPost = async (reviews, createPost) => {debugger
   const database = db();
 
   try {
@@ -73,10 +73,10 @@ const postById = async (reviews, id) => {
 };
 
 // UPDATE POST
-const updatePost = async (reviews, id, { updateTitle, updateComment }) => {
+const updatePost = async (reviews, id, { updateTitle, updateComment, updateImage }) => {
   const database = db();
   const results = await database.collection(reviews).doc(id).update(
-    { title: updateTitle, comment: updateComment });
+    { title: updateTitle, comment: updateComment, image: updateImage });
   return typeof results === 'undefined';
 };
 

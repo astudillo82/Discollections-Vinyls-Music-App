@@ -32,6 +32,19 @@ function findArtist(input) {
   });
 }
 
+// ARTIST PROFILE
+function artistProfile(id) {
+  return new Promise(async (resolve, reject) => {
+    const query = `https://api.discogs.com/artists/${id}?secret=${API_SECRET}&key=${API_KEY}`;
+    try {
+      const response = await axios.get(query);
+      resolve(response.data);
+    } catch (error) {
+      reject('You have an error!!!');// CHECK (put New Error ot not!!)
+    }
+  });
+}
+
 // NEXT URL
 function searchFromUrl(url) {
   return new Promise(async (resolve, reject) => {
@@ -63,6 +76,7 @@ function albumDetails(type, album_Id) {
 export {
   fetchMusic,
   albumDetails,
+  artistProfile,
   searchFromUrl,
   findArtist,
 };
