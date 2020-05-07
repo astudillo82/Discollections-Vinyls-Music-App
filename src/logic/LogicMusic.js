@@ -1,6 +1,7 @@
 import {
   fetchMusic,
   albumDetails,
+  artistProfile,
   findArtist,
   searchFromUrl,
 } from '../services/fetchMusic';
@@ -13,6 +14,11 @@ class LogicMusic {
   static takeFindArtist(input) {
     return findArtist(input);
   }
+
+  static takeArtistProfile(id) {
+    return artistProfile(id);
+  }
+
 
   static takeSearchFromUrl(url) {
     return searchFromUrl(url);

@@ -7,9 +7,8 @@ import { registerUser } from '../../logic/AuthUser';
 import RegisterImage from '../../images/register-background.jpg';
 import './Register.scss';
 
-
 const Register = () => {
-  const [name, setName] = useState('')
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [empties, setEmpties] = useState('');
@@ -30,42 +29,43 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <div className="register-page">
-        <div className="titles">
-          <h1 className="register-title">USER REGISTER</h1>
-          <p className="register-subtitle">Please fill in this form to create an account.</p>
-        </div>
+    <div className="register-page">
+      <div className="titles">
+        <h1 className="register-title">USER REGISTER</h1>
+        <p className="register-subtitle">Please fill in this form to create an account.</p>
+      </div>
 
-        <form className="register-form" onSubmit={submittedForm}>
+      <form className="register-form" onSubmit={submittedForm}>
 
-          <div className="form">
-            <div className="register-name">
-              <label htmlFor="name">NAME</label>
-              <input type="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-            </div>
-            <div className="register-email">
-              <label htmlFor="email">EMAIL</label>
-              <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            </div>
-
-            <div className="register-password">
-              <label htmlFor="password">PASSWORD</label>
-              <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </div>
+        <div className="form">
+          <div className="register-name">
+            <label htmlFor="name">NAME</label>
+            <input type="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
           </div>
 
-          <div className="buttons">
-            <button className="register-button" type="submit">REGISTER</button>
-            <Link to="/">
-              <button className="go_back-button" type="button">GO BACK</button>
-            </Link>
+          <div className="register-email">
+            <label htmlFor="email">EMAIL</label>
+            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
-        </form>
-        {empties !== '' && <span>{empties}</span>}
-        <div>
-          <img src={RegisterImage} alt="register" />
+
+          <div className="register-password">
+            <label htmlFor="password">PASSWORD</label>
+            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </div>
         </div>
+
+        <div className="buttons">
+          <button className="register-button" type="submit">REGISTER</button>
+          <Link to="/">
+            <button className="go_back-button" type="button">GO BACK</button>
+          </Link>
+        </div>
+      </form>
+
+      {empties !== '' && <span className="empty-message">{empties}</span>}
+
+      <div className="background">
+        <img src={RegisterImage} alt="register-brackground" />
       </div>
     </div>
   );

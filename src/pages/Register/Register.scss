@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;    
-    border-radius: 3px;
+    // border-radius: 3px;
     width: 25rem;   
     margin-left: 50rem;
     margin-top: 15rem;
@@ -22,8 +22,7 @@
     form label {
         display: flex;
         flex-direction: column;
-        color:#fff;	         
-	    transition: all 0.5s ease-in-out;            
+        transition: all 0.5s ease-in-out;            
     }
    
     .register-password {
@@ -37,13 +36,17 @@
         width:100%;
         padding:8px 0 5px 0;
         font-size:16px;
-        color:#fff;    
+        color:#fff;   
+          
     }	 
 
     input:focus { 
+        background:transparent;
+        width: 100%;
         border:none;	
         outline:none;
         border-bottom:1px solid #e74c3c;
+        color:#fff;   
     } 
 
     .buttons {        
@@ -74,8 +77,13 @@
             transition: all 0.4s ease 0s;                
         }
     } 
+
+    span {
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+    }
     
-    img {
+    .background img{
         position: fixed;
         top: 0;
         left: 0;

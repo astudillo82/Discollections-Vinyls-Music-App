@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './AlbumResults.scss';
 import notFoundImage from '../../images/404.png';
 
-const AlbumResults = ({ item }) => { 
+const AlbumResults = ({ item }) => {
   const { thumb, title, year, label, master_id, id } = item;
   const link = master_id != 0 ? `masters-${master_id}` : `releases-${id}`;
   return (

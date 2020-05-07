@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { addFavs } from '../../services/firestoreData';
 import { userById } from '../../logic/AuthUser';
@@ -29,8 +29,8 @@ const AlbumDetails = () => {
   }, []);
 
   const {
-    images: [{ uri150 } = {}] = [],
-    artists: [{ name } = {}] = [],
+    images: [{ uri } = {}] = [],
+    artists: [{ name, id } = {}] = [],
     title,
     year,
     styles,
@@ -41,7 +41,7 @@ const AlbumDetails = () => {
   const addFavSubmit = async (e) => {
     e.preventDefault();
     const result = await addFavs('profile', user.id, {
-      image: uri150,
+      image: uri,
       name,
       title,
       year,
@@ -53,47 +53,65 @@ const AlbumDetails = () => {
       dispatch(setUser(profile));
       history.push('/favorites');
     }
-    // return result ? history.push('/favorites') : false;
   };
 
   return (
-    <div>
-      <div className="box">
-        <div className="album-details">
-          <h1>ALBUM DETAILS</h1>
-          <img src={uri150 || notFoundImage} alt="title" className="artist_cover" title={title} />
-          <button type="submit" onClick={addFavSubmit}>ADD FAVORITE LISTS</button>
-        </div>
+    <div className="album-details">
 
+      <nav className="nav">
+        <h1 className="nav__title">ALBUM DETAILS</h1>
+        <h2 className="nav__user">USER: {user.name} </h2>
+        <Link to="/home">
+          <button className="nav__button" type="button">GO BACK</button>
+        </Link>
+      </nav>
+
+      <div className="main">
         <div className="details">
-          <p className="title">ARTIST: </p>
-          <p className="content">{name}</p>
-          <p className="title"> TITLE:</p>
-          <p className="content">{title}</p>
-          <p className="title"> STYLES:</p>
-          <p className="content">{styles || 'unstyled'}</p>
-          <p className="title"> YEAR:</p>
-          <p className="content">{year}</p>
-          <p className="title"> GENRE:</p>
-          <p className="content">{genres}</p>
+          <p className="details__title">ARTIST: </p>
+          <p className="details__content">{name}</p>
+          <p className="details__title"> TITLE:</p>
+          <p className="details__content">{title}</p>
+          <p className="details__title"> STYLES:</p>
+          <p className="details__content">{styles || 'unknown'}</p>
+          <p className="details__title"> YEAR:</p>
+          <p className="details__content">{year || 'unknown'}</p>
+          <p className="details__title"> GENRE:</p>
+          <p className="details__content">{genres}</p>
+          <p className="details__title"> ARTIST ID:</p>
+          <p className="details__content">{id}</p>
+        </div>
+
+
+        <div className="center">
+          <img src={uri || notFoundImage} alt="title" className="center__image" title={title} />
+          <div className="button">
+            <button type="submit" className="button__favorite button-style" onClick={addFavSubmit}>ADD FAVORITE LISTS</button>
+            <Link to={`/artist/profile/${id}`}>
+              <button className="button__link button-style" type="button">ARTIST PROFILE</button>
+            </Link>
+          </div>
+        </div>
+
+        <div className="tracklist">
+          <h2 className="tracklist__title">TRACKLIST</h2>
+          <div className="tracklist__songs">
+            {details.tracklist && details.tracklist.map((elem) => {
+              return <p key={elem.id}>{elem.position} - {elem.title} - {elem.duration} </p>;
+            })}
+          </div>
         </div>
       </div>
 
-      <div className="tracklist">
-        <br />
-        <h2>TRACKLIST</h2>
-        <br />
-        {details.tracklist && details.tracklist.map((elem) => {
-          return <p key={elem.id}>{elem.position} - {elem.title} - {elem.duration} </p>;
-        })}
-      </div>
-      <br />
       <div className="background">
         <img src={detailImage} alt="detail-brackground" />
       </div>
+
       <Comments albumId={albumId} />
       <Footer />
     </div>
+
+
   );
 };
 

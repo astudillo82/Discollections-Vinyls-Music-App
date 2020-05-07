@@ -42,11 +42,14 @@ const Favorites = () => {
 
   return (
     <div className="favorites">
-      <h1>YOUR CUSTOM FAVORITE LIST</h1>
-
-      <Link to="/home">
-        <button className="go_back-button" type="button">GO BACK HOME</button>
-      </Link>
+      <nav>
+        <h1 className="title">YOUR CUSTOM FAVORITE LIST</h1>
+        <h3>USER: {user.name} </h3>
+        <Link to="/home">
+          <button className="go_back-button" type="button">GO BACK HOME</button>
+        </Link>
+        <button className="go_back-button" type="button" onClick={() => history.goBack()}>GO BACK ALBUM DETAILS</button>
+      </nav>
 
       <div className="favorites-results">
         {user.favorites && user.favorites.map((elem, item) => {
