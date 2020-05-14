@@ -14,62 +14,51 @@ const Favorites = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-
   const handleDeleteFavorite = async (elem) => {
     const result = await deleteFavs('profile', user.id, elem);
-
     if (result) {
       const profile = await userById(user.id);
       dispatch(setUser(profile));
       history.push('/favorites');
     }
-
-
-    // const newFavorites = user.favorites.filter((item) => item !== elem);
-    // return newFavorites;
-
-
-    // calcular el nuevo array del favoritos del usuario quitando elem de user.favorites
-    // const newFavorites = calcular favorites, user.favorites, filter
-    // setear en redux la nueva información del usuario reemplazando el array de favoritos por el que se acaba de calcular
-
-    // dispatch(setUser({...user, favorites: newFavorites}));
-
-
-    // const unsubscribed = favSnapShot('profiles', user.favorites, user.id);
-    // return () => unsubscribed();
   };
 
   return (
-    <div className="favorites">
-      <nav>
-        <h1 className="title">YOUR CUSTOM FAVORITE LIST</h1>
-        <h3>USER: {user.name} </h3>
-        <Link to="/home">
-          <button className="go_back-button" type="button">GO BACK HOME</button>
-        </Link>
-        <button className="go_back-button" type="button" onClick={() => history.goBack()}>GO BACK ALBUM DETAILS</button>
-      </nav>
+    <div>
+      <div className="favorites">
+        <nav>
+          <Link to="/home">
+            <button className="go_back-button" type="button">GO BACK HOME</button>
+          </Link>
+          <div className="center">
+            <h1 className="title">YOUR CUSTOM FAVORITE LIST</h1>
+            <h3>USER: {user.name} </h3>
+          </div>
+          <button className="go_back-button" type="button" onClick={() => history.goBack()}>GO BACK ALBUM DETAILS</button>
+        </nav>
 
-      <div className="favorites-results">
-        {user.favorites && user.favorites.map((elem, item) => {
-          return (
-            <div className="favs" key={item}>
-              <div>
-                <img src={elem.image} alt="title" className="artist_cover" title={elem.title} />
-                <br />
-                <Link to={`/album/${elem.albumId}`}>{elem.title}</Link>
-                <p>{elem.name}</p>
-                <button type="button" onClick={() => handleDeleteFavorite(elem)}>DELETE FAVORITE</button>
+        <div className="favorites-results">
+          {user.favorites && user.favorites.map((elem, item) => {
+            return (
+              <div className="favs" key={item}>
+                <div>
+                  <img src={elem.image} alt="title" className="artist_cover" title={elem.title} />
+                  <br />
+                  <Link to={`/album/${elem.albumId}`}>{elem.title}</Link>
+                  <p>{elem.name}</p>
+                  <button type="button" onClick={() => handleDeleteFavorite(elem)}>DELETE FAVORITE</button>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
+        <div className="background">
+          <img src={favoriteImage} alt="favorite-brackground" />
+        </div>
       </div>
-      <div className="background">
-        <img src={favoriteImage} alt="favorite-brackground" />
+      <div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };

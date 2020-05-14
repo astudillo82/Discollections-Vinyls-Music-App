@@ -1,0 +1,154 @@
+.post-details {
+  font-size: 2rem;
+}
+
+.post-details nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 3rem;
+  margin: 1rem;
+  background-image: -webkit-gradient(linear, right top, left top, from(rgba(255, 0, 0, 0)), to(red));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), red);
+}
+
+.post-details nav button {
+  width: 8em;
+  height: rem;
+  cursor: pointer;
+  border: 3px solid;
+  border-radius: 50px;
+  font-size: 18px;
+  outline: none;
+  position: relative;
+  right: 3rem;
+}
+
+.post-details .edit-fields {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 10rem;
+}
+
+.post-details .edit-fields p {
+  color: white;
+}
+
+.post-details .edit-fields .title-edit {
+  padding: 3rem 0 2rem 8rem;
+}
+
+.post-details .edit-fields .title-edit input {
+  height: 2.5rem;
+  width: 30rem;
+}
+
+.post-details .edit-fields textarea {
+  width: 150%;
+  padding: 30px;
+  font-size: 2rem;
+}
+
+.post-details .image-edit .title-click {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 10rem;
+}
+
+.post-details .image-edit img {
+  max-width: 250px;
+  margin: 1rem;
+}
+
+.post-details .image-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 3rem;
+}
+
+.post-details .image-inner p {
+  color: white;
+}
+
+.post-details .image-inner img {
+  max-width: 250px;
+  margin: 1rem;
+}
+
+.post-details .image-inner .progress-bar {
+  margin-top: 1rem;
+  background-color: lightgrey;
+  border-radius: 10px;
+  height: 25px;
+  width: 250px;
+}
+
+.post-details .image-inner .progress-bar .progress-bar-content {
+  background-color: tomato;
+  border-radius: 10px;
+  height: 25px;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+}
+
+.post-details .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.post-details .buttons button {
+  margin: 1rem 0;
+  width: 13rem;
+  height: 2.5rem;
+  cursor: pointer;
+  border: 3px solid;
+  border-radius: 50px;
+  font-size: 20px;
+  outline: none;
+}
+
+.post-details .background img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+/*# sourceMappingURL=PostDetails.css.map */

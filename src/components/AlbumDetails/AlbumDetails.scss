@@ -1,6 +1,7 @@
 .album-details {
     padding: 2rem;
      nav {
+        font-size: 2rem;
         border: 3px solid; 
         display: flex;
         justify-content: space-between;
@@ -9,14 +10,12 @@
         background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(255,0,0,1));
 
         .nav__button {
-            width: 6rem;
-            height: 2rem;
+            width: 8rem;
+            height: 3rem;
             cursor: pointer;
             border: 3px solid;
             border-radius: 50px;
-            font-size: 18px;
-            // outline: none;
-            // position: relative;
+            font-size: 18px;          
             right: 3rem;
         } 
      }
@@ -31,47 +30,51 @@
                 max-width: 350px;
                 border-style: groove;
                 box-shadow: 10px 10px 10px 0  black
-            }
+            }        
+        }
 
+        .details {       
+            padding: 2rem;
+            font-size: 1.5rem;
+            color:white;
+            
+            .details__title {
+                float: left;
+            }
+            .details__content {
+                margin-left: 100px;                    
+            }
             .button{
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 margin-top: 2rem;
+                
+                .button-style {
+                    width: 15rem;
+                    height: 2rem;
+                    cursor: pointer;
+                    border: 3px solid;
+                    border-radius: 50px;
+                    font-size: 18px;
+                    outline: none;           
+                } 
             }
-
-        .button-style {
-            width: 15rem;
-            height: 2rem;
-            cursor: pointer;
-            border: 3px solid;
-            border-radius: 50px;
-            font-size: 18px;
-            outline: none;           
-        } 
-    }
-
-        .tracklist {
-            display: flex;
-            flex-direction: column;
-            margin: 1rem 0 0 3rem;
-            color:white;
-            font-size:25px;
         }
     }
-
-    .details {       
-        padding: 2rem;
-        font-size: 1.5rem;
+    
+    .tracklist {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 3rem 0 0 3rem;
         color:white;
-        
-        .details__title {
-            float: left;
+        font-size:25px;
+
+        .tracklist__songs{
+            padding-top: 3rem;
         }
-        .details__content {
-            margin-left: 100px;                    
-        }
-    } 
+    }  
 
     .background {
         position: fixed;

@@ -1,0 +1,53 @@
+.album-results {
+  padding: 2rem;
+  color: white;
+}
+
+.album-results .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.album-results .content img {
+  border-style: groove;
+  -webkit-box-shadow: 0 0 10px 0 black;
+          box-shadow: 0 0 10px 0 black;
+}
+
+.album-results .content .specs {
+  text-align: center;
+  padding: 1rem;
+  font-size: 20px;
+}
+
+.album-results .content .specs a {
+  text-decoration: none;
+}
+
+.album-results .content .specs a:visited, .album-results .content .specs a:link {
+  background: -webkit-gradient(linear, left top, left bottom, from(var(--mainColor)), to(var(--mainColor)));
+  background: linear-gradient(to bottom, var(--mainColor) 0%, var(--mainColor) 100%);
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: 4px 4px;
+  color: white;
+  text-decoration: none;
+}
+
+.album-results .content .specs a:hover {
+  background: none;
+  color: #df1b1b;
+  font-family: 'Creepster', serif;
+  font-size: 1.2em;
+  letter-spacing: 3px;
+  line-height: .75em;
+}
+/*# sourceMappingURL=AlbumResults.css.map */
