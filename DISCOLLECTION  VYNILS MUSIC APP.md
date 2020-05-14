@@ -74,6 +74,8 @@ The user, when starting the app, sign up in a quite simple way and then log in. 
 |             |             | CSS         |         |
 |             |             | Sass        |         |
 
+## Testing 
+![](src/images/Testing-pass.png)
 
 
 ## Development Info
@@ -84,7 +86,7 @@ The user, when starting the app, sign up in a quite simple way and then log in. 
 
 
 ## NEXT VERSION
-- ***Owner contact(Link):*** In this sub-page, the user will be able to contact direct way with the owner:
+- ***MOBILE VERSION(RESPONSIVE)***
  - ***Owner review***: The owner makes a short, but precise personal presentation and what he would like to do with the product (sell, exchange, come to an agreement, etc...).
  - ***Chat***: Contact with the owner chatting a message.
  - ***E-mail***: Contact with the owner with a e-mail.
