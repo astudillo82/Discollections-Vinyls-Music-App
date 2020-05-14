@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import { getSnapShot, newPost } from '../../services/firestoreData';
 import { uploadImage, STATUS } from '../../services/storageFiles';
 import notFoundImage from '../../images/404.png';
-// import RatingAlbum from '../RatingAlbum';
 import './Comments.scss';
 
 const Star = ({ selected = false, onClick = (f) => f }) => (
@@ -14,13 +14,12 @@ const Star = ({ selected = false, onClick = (f) => f }) => (
 const Comments = ({ albumId }) => {
   const user = useSelector((state) => state.user);
   const [getPosts, setGetPosts] = useState([]);
+  const date = moment().format("LLLL");
 
   const [title, setTitle] = useState('');
   const [comment, setComment] = useState('');
   const [selectStar, setSelectStar] = useState(0);
-
   const [image, setImage] = useState('');
-
   const [empties, setEmpties] = useState('');
 
   useEffect(() => {
@@ -28,7 +27,7 @@ const Comments = ({ albumId }) => {
     return () => unsubscribed();
   }, []);
 
-  const postSubmit = async (e) => {debugger
+  const postSubmit = async (e) => {
     e.preventDefault();
     setEmpties('');
     if (!title || !comment) {
@@ -66,14 +65,13 @@ const Comments = ({ albumId }) => {
 
   return (
     <div className="comments">
-
-      <div className="title">
-      <h1>ADD A REVIEW</h1>
+      <div className="header">
+        <h1 className="header__title"> ADD A REVIEW</h1>
       </div>
       <br />
-      <p className="rating">
-        RATING :
-        <div className="star-rating">
+      <div className="rating">
+        <h3 className="rating__title">RATING :</h3>
+        <div className="rating__star">
           {[1, 2, 3, 4, 5].map((elem, index) => {
             const rating = index + 1;
             return (
@@ -86,46 +84,36 @@ const Comments = ({ albumId }) => {
             );
           })}
         </div>
-      </p>
+      </div>
       <br />
-
-      <form className="review-form" onSubmit={postSubmit}>
-
+      <form className="form" onSubmit={postSubmit}>
         <div className="inputs">
           <label htmlFor="name" />
-          <input className="name" type="name" value={user.name || ''} disabled />
-
+          <input className="input__name" type="name" value={user.name || ''} disabled />
           <label htmlFor="title"/>
-          <input className="title" type="title" value={title} placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
+          <input className="input__title" type="title" value={title} placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
           <br />
-
           {empties !== '' && <span className="empty">{empties}</span>}
-
-          <div className="text-area">
+          <div className="textarea">
             <label htmlFor="comments" />
-            <textarea type="comments" value={comment} placeholder="Write your review here..." onChange={(e) => setComment(e.target.value)} />
+            <textarea type="comments" className="textarea__review" value={comment} placeholder="Write your review here..." onChange={(e) => setComment(e.target.value)} />
           </div>
-
-          <div className="add-image">
-            <input type="file" id="image" onChange={HandleuploadImage} />
+          <div className="insert">
+            <input type="file" id="image" className="insert__image" onChange={HandleuploadImage} />
           </div>
-
-          <div className="buttons">
-            <button type="submit" onClick={postSubmit} onChange={() => setEmpties('')}>Add Review</button>
+          <div className="button">
+            <button type="submit" className="button__reviews" onClick={postSubmit} onChange={() => setEmpties('')}>Add Review</button>
           </div>
         </div>
-
       </form>
 
       {getPosts.map((elem) => (
         <div className="reviews" key={elem.id}>
           {user.id === elem.userId ? (
             <h1 title="click me if you want to update your review..."><Link to={`/album/post/${elem.id}`}>{elem.user}</Link></h1>
-          ) : <h1>{elem.user}</h1>}
-
+          ) : <h1 className="reviews__user">{elem.user}</h1>}
           <div className="rating">
-            <div className="star-rating">
-              <h2>RATING :</h2>
+            <div className="rating__star">
               {[...Array(5)].map((item, index) => {
                 const rating = index + 1;
                 return (
@@ -138,10 +126,14 @@ const Comments = ({ albumId }) => {
               })}
             </div>
           </div>
-          <img src={elem.image || notFoundImage} className="image" alt="" />
-          <div className="text">
-            <h2>{elem.title}</h2>
-            <h3>{elem.comment}</h3>
+
+          <div className="image">
+            <img src={elem.image || notFoundImage} className="image__selected" alt="" />
+            <div className="text">
+              <h2 className="text__title">{elem.title}</h2>
+              <h3 className="text__comment">{elem.comment}</h3>
+              <p>{date}</p>
+            </div>
           </div>
         </div>
       ))}

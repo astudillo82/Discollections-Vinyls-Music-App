@@ -4,7 +4,6 @@ import axios from 'axios';
 const API_KEY = 'IDEzlChCVBuEmXtiHrJu';
 const API_SECRET = 'eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS';
 
-// HOME PAGE
 function fetchMusic() {
   return new Promise(async (resolve, reject) => {
     const query = 'https://api.discogs.com/database/search?format=vinyl&key=IDEzlChCVBuEmXtiHrJu&secret=eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS&page=1&per_page=25';
@@ -18,7 +17,6 @@ function fetchMusic() {
   });
 }
 
-// SEARCH BY ARTIST
 function findArtist(input) {
   return new Promise(async (resolve, reject) => {
     const query = `https://api.discogs.com/database/search?format=vinyl&artist=${input}&key=IDEzlChCVBuEmXtiHrJu&secret=eJIIcgcBhFcXlqTMmhpAuuWUsmASmvSS&page=1&per_page=25`;
@@ -32,7 +30,6 @@ function findArtist(input) {
   });
 }
 
-// ARTIST PROFILE
 function artistProfile(id) {
   return new Promise(async (resolve, reject) => {
     const query = `https://api.discogs.com/artists/${id}?secret=${API_SECRET}&key=${API_KEY}`;
@@ -40,12 +37,11 @@ function artistProfile(id) {
       const response = await axios.get(query);
       resolve(response.data);
     } catch (error) {
-      reject('You have an error!!!');// CHECK (put New Error ot not!!)
+      reject('You have an error!!!');
     }
   });
 }
 
-// NEXT URL
 function searchFromUrl(url) {
   return new Promise(async (resolve, reject) => {
     const query = url;
@@ -54,12 +50,12 @@ function searchFromUrl(url) {
       const response = await axios.get(query);
       resolve(response.data);
     } catch (error) {
-      reject('You have an error!!!');// CHECK (put New Error ot not!!)
+      reject('You have an error!!!');
     }
   });
 }
 
-// ALBUM DETAILS(LINK TO)
+
 function albumDetails(type, album_Id) {
   return new Promise(async (resolve, reject) => {
     const query = `https://api.discogs.com/${type}/${album_Id}?secret=${API_SECRET}&key=${API_KEY}`;
@@ -68,7 +64,7 @@ function albumDetails(type, album_Id) {
       const response = await axios.get(query);
       resolve(response.data);
     } catch (error) {
-      reject('You have an error!!!');// CHECK (put New Error ot not!!)
+      reject('You have an error!!!');
     }
   });
 }

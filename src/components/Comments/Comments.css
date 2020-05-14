@@ -1,0 +1,178 @@
+.comments {
+  margin-top: 3rem;
+}
+
+.comments .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+}
+
+.comments .rating {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.comments .rating .rating__star {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.comments form .inputs {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.comments form .inputs .input__name, .comments form .inputs .input__title {
+  color: white;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #e74c3c;
+  width: 30%;
+  padding: 8px 0 5px 0;
+  -webkit-transition: width 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.comments form .inputs input:focus {
+  width: 40%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #e74c3c;
+}
+
+.comments form span {
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+.comments form .empty {
+  color: white;
+}
+
+.comments form textarea {
+  height: auto;
+  max-width: 600px;
+  color: #999;
+  font-weight: 400;
+  font-size: 30px;
+  width: 150%;
+  background: #fff;
+  border-radius: 3px;
+  line-height: 2em;
+  border: none;
+  margin: 2rem;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+  padding: 1rem 3rem 3rem 1rem;
+  -webkit-transition: height 2s ease;
+  transition: height 2s ease;
+  position: relative;
+  right: 6rem;
+}
+
+.comments form .insert__image {
+  font-size: 1.3rem;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.comments form button {
+  width: 11rem;
+  height: 2.5rem;
+  cursor: pointer;
+  border: 3px solid;
+  border-radius: 50px;
+  font-size: 25px;
+  outline: none;
+  margin-top: 1rem;
+}
+
+.comments .reviews {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-style: solid;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 0, 0, 0)), to(red));
+  background-image: linear-gradient(to right, rgba(255, 0, 0, 0), red);
+  padding: 1rem;
+  margin: 3rem 3rem;
+  width: 85%;
+}
+
+.comments .reviews a {
+  text-decoration: none;
+}
+
+.comments .reviews a:hover {
+  background: none;
+  color: #df1b1b;
+  font-size: 1em;
+  letter-spacing: 3px;
+  line-height: .75em;
+}
+
+.comments .reviews .image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+}
+
+.comments .reviews .image .text {
+  padding: 1rem;
+  color: white;
+}
+
+.comments .reviews .image .image__selected {
+  max-width: 150px;
+}
+
+.star {
+  cursor: pointer;
+  width: 2em;
+  height: 2em;
+  background-color: grey;
+  -webkit-clip-path: polygon(50% 0%, 63% 38%, 100% 38%, 69% 59%, 82% 100%, 50% 75%, 18% 100%, 31% 59%, 0% 38%, 37% 38%);
+  clip-path: polygon(50% 0%, 63% 38%, 100% 38%, 69% 59%, 82% 100%, 50% 75%, 18% 100%, 31% 59%, 0% 38%, 37% 38%);
+}
+
+.star.selected {
+  background-color: yellow;
+}
+/*# sourceMappingURL=Comments.css.map */

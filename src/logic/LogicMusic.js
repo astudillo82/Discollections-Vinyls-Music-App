@@ -19,13 +19,12 @@ class LogicMusic {
     return artistProfile(id);
   }
 
-
   static takeSearchFromUrl(url) {
     return searchFromUrl(url);
   }
 
-  static takeAlbumDetails(id) {     //masters-123
-    const splitId = id.split('-'); //[masters,123]
+  static takeAlbumDetails(id) {
+    const splitId = id.split('-');
     return albumDetails(splitId[0], splitId[1]);
   }
 }

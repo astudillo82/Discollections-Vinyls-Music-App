@@ -30,40 +30,31 @@ const Register = () => {
 
   return (
     <div className="register-page">
-      <div className="titles">
-        <h1 className="register-title">USER REGISTER</h1>
-        <p className="register-subtitle">Please fill in this form to create an account.</p>
-      </div>
-
-      <form className="register-form" onSubmit={submittedForm}>
-
-        <div className="form">
-          <div className="register-name">
-            <label htmlFor="name">NAME</label>
-            <input type="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
-          </div>
-
-          <div className="register-email">
-            <label htmlFor="email">EMAIL</label>
-            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          </div>
-
-          <div className="register-password">
-            <label htmlFor="password">PASSWORD</label>
-            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          </div>
+      <form className="form" onSubmit={submittedForm}>
+        <div className="title">
+          <h1 className="title__register">USER REGISTER</h1>
+          <p className="title__subtitle">Please fill in this form to create an account.</p>
         </div>
-
+        <div className="register">
+          <input type="name" id="name" className="register__name" value={name} onChange={(e) => setName(e.target.value)} />
+          <label htmlFor="name">NAME</label>
+        </div>
+        <div className="email">
+          <input type="email" id="email" className="email__register" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <label htmlFor="email">EMAIL</label>
+        </div>
+        <div className="password">
+          <input type="password" id="password" className="password__register" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <label htmlFor="password">PASSWORD</label>
+        </div>
         <div className="buttons">
-          <button className="register-button" type="submit">REGISTER</button>
+          <button className="buttons__register" type="submit">REGISTER</button>
           <Link to="/">
-            <button className="go_back-button" type="button">GO BACK</button>
+            <button className="buttons__go-back" type="button">GO BACK</button>
           </Link>
         </div>
+        {empties !== '' && <span className="empty-message">{empties}</span>}
       </form>
-
-      {empties !== '' && <span className="empty-message">{empties}</span>}
-
       <div className="background">
         <img src={RegisterImage} alt="register-brackground" />
       </div>

@@ -1,0 +1,80 @@
+.profile {
+  padding: 2rem;
+}
+
+.profile nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 3rem;
+  margin: 1rem;
+  border: 3px solid;
+  background-image: -webkit-gradient(linear, right top, left top, from(rgba(255, 0, 0, 0)), to(red));
+  background-image: linear-gradient(to left, rgba(255, 0, 0, 0), red);
+}
+
+.profile nav .nav__button {
+  width: 12rem;
+  height: 4rem;
+  cursor: pointer;
+  border: 3px solid;
+  border-radius: 50px;
+  font-size: 18px;
+  right: 3rem;
+}
+
+.profile .main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.profile .main .main__image {
+  -webkit-box-shadow: 0 0 10px 0 black;
+          box-shadow: 0 0 10px 0 black;
+}
+
+.profile .main .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 10rem 0 0 3rem;
+  font-size: 25px;
+  color: white;
+}
+
+.profile .main .content .content__members {
+  margin-top: 2rem;
+}
+
+.profile .biography {
+  margin: 3rem;
+  font-size: 2rem;
+  color: white;
+}
+
+.profile .links {
+  margin: 0 0 0 25rem;
+  font-size: 20px;
+  color: white;
+}
+
+.profile .background img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+/*# sourceMappingURL=ArtistProfile.css.map */

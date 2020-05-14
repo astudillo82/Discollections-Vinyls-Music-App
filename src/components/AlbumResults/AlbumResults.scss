@@ -1,49 +1,49 @@
-.results {   
-    padding: 1rem;
-    
-    img {
-        margin-left: 6rem;
-        border-style: groove;
-        box-shadow: 0 0 10px 0 black;
+.album-results {   
+    padding: 2rem; 
+    color:white; 
+
+    .content {  
+        display: flex;
+        flex-direction: column;
+        align-items: center;    
+            
+        img {            
+            border-style: groove;
+            box-shadow: 0 0 10px 0 black;
+        }
+
+            .specs {
+                text-align: center;
+                padding: 1rem;
+                font-size: 20px;
+                
+            a { 
+                text-decoration: none;
+            }
+                
+                
+                a:visited, a:link {
+                    background:
+                    linear-gradient(
+                        to bottom, var(--mainColor) 0%,
+                        var(--mainColor) 100%
+                        );
+                    background-position: 0 100%;
+                    background-repeat: repeat-x;
+                    background-size: 4px 4px;
+                    color: white;
+                    text-decoration: none;
+                }
+                
+                a:hover {
+                    background: none;
+                    color: rgb(223, 27, 27);
+                    font-family: 'Creepster', serif;
+                    font-size: 1.2em;
+                    letter-spacing: 3px;
+                    line-height: .75em;
+                }     
+        }        
     }
-
-    .specs {
-        text-align: center;
-        padding: 1rem;
-        font-size: 20px;
-
-        a { 
-         text-decoration: none;
-         color:white
-        }
-
-        a:visited, a:link {
-            background:
-            linear-gradient(
-              to bottom, var(--mainColor) 0%,
-              var(--mainColor) 100%
-            );
-            background-position: 0 100%;
-            background-repeat: repeat-x;
-            background-size: 4px 4px;
-            color: white;
-            text-decoration: none;
-        }
-
-        a:hover {
-            background: none;
-            color: rgb(223, 27, 27);
-            font-family: 'Creepster', serif;
-            font-size: 1.2em;
-            letter-spacing: 3px;
-            line-height: .75em;
-        }     
-
-        .label {
-            color:white;
-        }
-        .year{
-            color: white;
-        }
-    }
+        
 }

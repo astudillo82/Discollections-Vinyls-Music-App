@@ -3,9 +3,7 @@ import 'firebase/firestore';
 
 const db = () => firebase.firestore();
 
-// POSTS
-// SAVING DATA (FIRESTORE DATABASE)
-const newPost = async (reviews, createPost) => {debugger
+const newPost = async (reviews, createPost) => {
   const database = db();
 
   try {
@@ -16,7 +14,7 @@ const newPost = async (reviews, createPost) => {debugger
   }
 };
 
-// ONSNAPSHOP(REAL-TIME)
+
 const getSnapShot = (reviews, callback, albumId) => {
   const database = db();
 
@@ -35,7 +33,7 @@ const getSnapShot = (reviews, callback, albumId) => {
 };
 
 
-// UPDATE FAVORITES
+
 const addFavs = async (profile, id, { image, name, title, year, albumId }) => {
   const database = db();
 
@@ -43,21 +41,21 @@ const addFavs = async (profile, id, { image, name, title, year, albumId }) => {
     const results = await database.collection(profile).doc(id)
       .update({
         favorites: firebase.firestore.FieldValue.arrayUnion(
-          { image, name, title, year, albumId })});
+          { image, name, title, year, albumId }) });
     return typeof results === 'undefined';
   } catch (error) {
     return null;
   }
 };
 
-// DELETE FAVORITES
+
 const deleteFavs = async (profile, id,{ image, name, title, year, albumId }) => {
   const database = db();
   try {
     const results = await database.collection(profile).doc(id)
       .update({
         favorites: firebase.firestore.FieldValue.arrayRemove(
-          { image, name, title, year, albumId })});
+          { image, name, title, year, albumId }) });
     return typeof results === 'undefined';
   } catch (error) {
     return null;
@@ -65,14 +63,13 @@ const deleteFavs = async (profile, id,{ image, name, title, year, albumId }) => 
 };
 
 
-// GET POST BY ID
 const postById = async (reviews, id) => {
   const database = db();
   const results = await database.collection(reviews).doc(id).get();
   return results.exists ? { id, ...results.data() } : null;
 };
 
-// UPDATE POST
+
 const updatePost = async (reviews, id, { updateTitle, updateComment, updateImage }) => {
   const database = db();
   const results = await database.collection(reviews).doc(id).update(
@@ -80,7 +77,6 @@ const updatePost = async (reviews, id, { updateTitle, updateComment, updateImage
   return typeof results === 'undefined';
 };
 
-// CREATE NEW WITH ID
 const newOneWithId = async (reviews, createPost, id) => {
   const database = db();
   try {
@@ -91,7 +87,7 @@ const newOneWithId = async (reviews, createPost, id) => {
   }
 };
 
-// DELETE POST
+
 const deletePost = async (reviews, id) => {
   const database = db();
   const results = await database.collection(reviews).doc(id).delete();
